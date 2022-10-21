@@ -14,8 +14,12 @@ namespace StateMachine.Player
         public override void Tick()
         {
             Vector2 movementInputValue = StateMachine.InputReader.MovementValue;
-            
-            Debug.Log(movementInputValue);
+
+            StateMachine.PlayerMover.MoveWithDefaultSpeed(new Vector3(
+                movementInputValue.x,
+                0f,
+                movementInputValue.y)
+            );
         }
 
         public override void Exit()

@@ -1,15 +1,17 @@
 using Core;
-using UnityEngine;
+using Locomotion.Player;
 
 namespace StateMachine.Player
 {
     public class PlayerStateMachine : StateMachine
     {
-        [field: SerializeField] public InputReader InputReader { get; private set; }
+        public InputReader InputReader { get; private set; }
+        public PlayerMover PlayerMover { get; private set; }
 
         private void Awake()
         {
             InputReader = GetComponent<InputReader>();
+            PlayerMover = GetComponent<PlayerMover>();
         }
 
         private void Start()
