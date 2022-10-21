@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1984212985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1984212987}
+  - component: {fileID: 1984212986}
+  m_Layer: 6
+  m_Name: FacingPlane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1984212987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984212985}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.21, y: 0, z: -2.48}
+  m_LocalScale: {x: 65, y: 0, z: 65}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 5008082341407053786}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1984212986
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984212985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5203068196418266873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,13 +113,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2551966893679272829, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: c0b3a4aae7d4bf9488a8df3a3f65cdb4, type: 3}
+    - target: {fileID: 2551966893679272829, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7d415c2c26afc3343b098e983b9fe53a, type: 2}
     - target: {fileID: 3391437371324169304, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3391437371324169304, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -8.21
       objectReference: {fileID: 0}
     - target: {fileID: 3391437371324169304, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: m_LocalPosition.y
@@ -82,7 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3391437371324169304, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.48
       objectReference: {fileID: 0}
     - target: {fileID: 3391437371324169304, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: m_LocalRotation.w
@@ -156,6 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85e9b8b78de64345ad8d5c2bc07dbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AnimationCrossFadeDuration>k__BackingField: 0.1
+  <AnimatorDampTime>k__BackingField: 0.05
 --- !u!114 &6743096080860880242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,8 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cf0b4f8c1fd5343885f095b64101be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSpeed: 5
-  rotationDamping: 100
+  defaultSpeed: 10
   maxRaycastDistance: 100
   searchingLayers:
     serializedVersion: 2
