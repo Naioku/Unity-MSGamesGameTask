@@ -21,6 +21,8 @@ namespace StateMachine.Player
 
         public override void Enter()
         {
+            StateMachine.InputReader.JumpEvent += HandleJump;
+            
             StateMachine.Animator.CrossFadeInFixedTime(LocomotionStateHash, StateMachine.AnimationCrossFadeDuration);
         }
 
@@ -36,10 +38,17 @@ namespace StateMachine.Player
             UpdateAnimator(movementDirection);
             
             _playerMover.FaceCharacterToPosition(_inputReader.MousePosition);
+            
+            if (StateMachine.PlayerMover.IsFallingDown)
+            {
+                StateMachine.SwitchState(new PlayerFallingDownState(StateMachine));
+                return;
+            }
         }
 
         public override void Exit()
         {
+            StateMachine.InputReader.JumpEvent -= HandleJump;
         }
         
         private void UpdateAnimator(Vector3 movementGlobalDirection)
@@ -51,6 +60,11 @@ namespace StateMachine.Player
 
             StateMachine.Animator.SetFloat(ForwardMovementSpeedHash, movementForwardValue, StateMachine.AnimatorDampTime, Time.deltaTime);
             StateMachine.Animator.SetFloat(RightMovementSpeedHash, movementRightValue, StateMachine.AnimatorDampTime, Time.deltaTime);
+        }
+        
+        private void HandleJump()
+        {
+            StateMachine.SwitchState(new PlayerJumpingState(StateMachine));
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,8 @@ namespace Core
 {
     public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
+        public event Action JumpEvent; 
+        
         public Vector2 MovementValue { get; private set; }
         public Vector2 MousePosition { get; private set; }
         
@@ -26,6 +29,11 @@ namespace Core
         public void OnMoveMouse(InputAction.CallbackContext context)
         {
             MousePosition = context.ReadValue<Vector2>();
+        }
+
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            JumpEvent?.Invoke();
         }
     }
 }

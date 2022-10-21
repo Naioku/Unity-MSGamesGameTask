@@ -173,6 +173,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6524382334745539931, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
 --- !u!4 &5008082341407053786 stripped
@@ -224,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSpeed: 10
-  maxRaycastDistance: 100
+  maxRaycastDistance: 40
   searchingLayers:
     serializedVersion: 2
     m_Bits: 64
