@@ -18,7 +18,7 @@ namespace StateMachine.Player
         {
             StateMachine.PlayerMover.ApplyMomentum();
             
-            if (HasAnimationFinished("Jump") && StateMachine.PlayerMover.IsFallingDown)
+            if (HasAnimationFinished("Jump") && StateMachine.ForceReceiver.IsFallingDown)
             {
                 StateMachine.SwitchState(new PlayerFallingDownState(StateMachine));
                 return;

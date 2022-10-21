@@ -17,7 +17,7 @@ namespace StateMachine.Player
         {
             StateMachine.PlayerMover.ApplyMomentum();
 
-            if (StateMachine.PlayerMover.IsGrounded)
+            if (StateMachine.ForceReceiver.IsGrounded)
             {
                 StateMachine.SwitchState(new PlayerGroundingState(StateMachine));
             }

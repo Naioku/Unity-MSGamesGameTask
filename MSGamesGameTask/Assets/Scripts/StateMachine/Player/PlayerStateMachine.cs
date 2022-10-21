@@ -1,4 +1,5 @@
 using Core;
+using Locomotion;
 using Locomotion.Player;
 using UnityEngine;
 
@@ -11,12 +12,14 @@ namespace StateMachine.Player
         
         public InputReader InputReader { get; private set; }
         public PlayerMover PlayerMover { get; private set; }
+        public ForceReceiver ForceReceiver { get; private set; }
         public Animator Animator { get; private set; }
 
         private void Awake()
         {
             InputReader = GetComponent<InputReader>();
             PlayerMover = GetComponent<PlayerMover>();
+            ForceReceiver = GetComponent<ForceReceiver>();
             Animator = GetComponent<Animator>();
         }
 

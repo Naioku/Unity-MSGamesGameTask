@@ -4,9 +4,6 @@ namespace Locomotion.Player
 {
     public class PlayerMover : MonoBehaviour
     {
-        public bool IsFallingDown => _characterController.velocity.y < 0f;
-        public bool IsGrounded => _characterController.isGrounded;
-        
         [SerializeField] private float defaultSpeed = 5f;
         [SerializeField] private float jumpVelocity = 5f;
         [SerializeField] private float maxRaycastDistance = 40f;

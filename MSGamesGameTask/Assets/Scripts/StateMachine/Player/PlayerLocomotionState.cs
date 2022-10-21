@@ -38,12 +38,6 @@ namespace StateMachine.Player
             UpdateAnimator(movementDirection);
             
             _playerMover.FaceCharacterToPosition(_inputReader.MousePosition);
-            
-            if (StateMachine.PlayerMover.IsFallingDown)
-            {
-                StateMachine.SwitchState(new PlayerFallingDownState(StateMachine));
-                return;
-            }
         }
 
         public override void Exit()
