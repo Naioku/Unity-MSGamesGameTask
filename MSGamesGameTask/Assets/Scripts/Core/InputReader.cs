@@ -6,6 +6,7 @@ namespace Core
     public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         public Vector2 MovementValue { get; private set; }
+        public Vector2 MousePosition { get; private set; }
         
         private Controls _controls;
 
@@ -20,6 +21,11 @@ namespace Core
         public void OnMove(InputAction.CallbackContext context)
         {
             MovementValue = context.ReadValue<Vector2>();
+        }
+
+        public void OnMoveMouse(InputAction.CallbackContext context)
+        {
+            MousePosition = context.ReadValue<Vector2>();
         }
     }
 }

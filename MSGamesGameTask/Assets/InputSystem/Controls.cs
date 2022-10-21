@@ -35,6 +35,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveMouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""da58136f-e649-47f0-8c7d-8760403f8e61"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -95,12 +104,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b4ae6d90-150a-42c8-92cb-3d00355cd067"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""id"": ""56e0edc9-71b6-43c0-947f-669df86842c6"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""MoveMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -123,23 +132,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
-        },
-        {
-            ""name"": ""Gamepad"",
-            ""bindingGroup"": ""Gamepad"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Gamepad>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
         }
     ]
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_MoveMouse = m_Player.FindAction("MoveMouse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -200,11 +199,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_MoveMouse;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @MoveMouse => m_Wrapper.m_Player_MoveMouse;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -217,6 +218,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @MoveMouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveMouse;
+                @MoveMouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveMouse;
+                @MoveMouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveMouse;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -224,6 +228,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @MoveMouse.started += instance.OnMoveMouse;
+                @MoveMouse.performed += instance.OnMoveMouse;
+                @MoveMouse.canceled += instance.OnMoveMouse;
             }
         }
     }
@@ -237,17 +244,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
         }
     }
-    private int m_GamepadSchemeIndex = -1;
-    public InputControlScheme GamepadScheme
-    {
-        get
-        {
-            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
-            return asset.controlSchemes[m_GamepadSchemeIndex];
-        }
-    }
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnMoveMouse(InputAction.CallbackContext context);
     }
 }

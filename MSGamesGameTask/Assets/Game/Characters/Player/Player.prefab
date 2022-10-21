@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5037211677003975543, guid: 731298330dd307e42850e57c7117b9de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.22
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5037211677003975543, guid: 731298330dd307e42850e57c7117b9de, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5037211677003975543, guid: 731298330dd307e42850e57c7117b9de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.25699997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5037211677003975543, guid: 731298330dd307e42850e57c7117b9de, type: 3}
       propertyPath: m_LocalRotation.w
@@ -29,15 +29,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5037211677003975543, guid: 731298330dd307e42850e57c7117b9de, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5037211677003975543, guid: 731298330dd307e42850e57c7117b9de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5037211677003975543, guid: 731298330dd307e42850e57c7117b9de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5037211677003975543, guid: 731298330dd307e42850e57c7117b9de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5668930187475407309, guid: 731298330dd307e42850e57c7117b9de, type: 3}
       propertyPath: m_Name
-      value: Knight
+      value: KnightRed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 731298330dd307e42850e57c7117b9de, type: 3}
@@ -112,6 +112,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6524382334745539931, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: m_Height
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524382334745539931, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: m_Center.y
+      value: 1.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
 --- !u!4 &5008082341407053786 stripped
@@ -124,18 +132,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 44238303482392850, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
   m_PrefabInstance: {fileID: 7678784738260921218}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4802927720010075469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7641953850252008080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e85e9b8b78de64345ad8d5c2bc07dbbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3121055479369854481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +142,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3601d18a8ab8a8c4c86e5e07a1c81940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4802927720010075469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7641953850252008080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85e9b8b78de64345ad8d5c2bc07dbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6743096080860880242
@@ -161,3 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSpeed: 5
+  rotationDamping: 100
+  maxRaycastDistance: 100
+  searchingLayers:
+    serializedVersion: 2
+    m_Bits: 64
