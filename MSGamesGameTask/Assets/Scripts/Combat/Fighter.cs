@@ -5,9 +5,6 @@ namespace Combat
 {
     public class Fighter: MonoBehaviour
     {
-        [Tooltip("Order has to be the same as in Weapon's equipped prefabs.")]
-        [SerializeField] private Transform[] weaponSlots;
-        
         [SerializeField] private Weapon defaultWeapon;
         [SerializeField] private Attack[] attacks = new Attack[2];
 
@@ -26,9 +23,10 @@ namespace Combat
         }
         
         // Called by animation event
-        public void Shoot(int weaponIndex)
+        public void Shoot(AttackType attackType)
         {
-            print(weaponIndex);
+            // _currentWeapon.LunchProjectile(attackType, _attacksLookup[attackType].WeaponSlot);
+            print(attackType.ToString());
         }
 
         private void BuildAttacksLookup()
@@ -44,7 +42,8 @@ namespace Combat
 
         private void EquipWeapon(Weapon weapon)
         {
-            weapon.Equip(weaponSlots, GetComponent<Animator>());
+            BuildAttacksLookup();
+            weapon.Equip(_attacksLookup, GetComponent<Animator>());
             _currentWeapon = weapon;
         }
     }
