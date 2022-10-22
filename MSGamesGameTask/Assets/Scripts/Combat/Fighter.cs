@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Combat
 {
@@ -10,6 +11,7 @@ namespace Combat
         [SerializeField] private Weapon defaultWeapon;
         [SerializeField] private Attack[] attacks = new Attack[2];
 
+        private Dictionary<AttackType, Attack> _attacksLookup;
         private Weapon _currentWeapon;
 
         private void Start()
@@ -17,9 +19,10 @@ namespace Combat
             EquipWeapon(defaultWeapon);
         }
 
-        public Attack GetAttack(int attackIndex)
+        public Attack GetAttack(AttackType attackType)
         {
-            return attacks[attackIndex];
+            BuildAttacksLookup();
+            return _attacksLookup[attackType];
         }
         
         // Called by animation event
@@ -28,10 +31,27 @@ namespace Combat
             print(weaponIndex);
         }
 
+        private void BuildAttacksLookup()
+        {
+            if (_attacksLookup != null) return;
+
+            _attacksLookup = new Dictionary<AttackType, Attack>();
+            foreach (Attack attack in attacks)
+            {
+                _attacksLookup.Add(attack.AttackType, attack);
+            }
+        }
+
         private void EquipWeapon(Weapon weapon)
         {
             weapon.Equip(weaponSlots, GetComponent<Animator>());
             _currentWeapon = weapon;
         }
+    }
+
+    public enum AttackType
+    {
+        LeftHanded,
+        RightHanded
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using Combat;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,7 @@ namespace Core
     public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         public event Action JumpEvent; 
-        public event Action<int> AttackEvent; 
+        public event Action<AttackType> AttackEvent; 
         
         public Vector2 MovementValue { get; private set; }
         public Vector2 MousePosition { get; private set; }
@@ -39,12 +40,12 @@ namespace Core
 
         public void OnAttackLeft(InputAction.CallbackContext context)
         {
-            AttackEvent?.Invoke(0);
+            AttackEvent?.Invoke(AttackType.LeftHanded);
         }
 
         public void OnAttackRight(InputAction.CallbackContext context)
         {
-            AttackEvent?.Invoke(1);
+            AttackEvent?.Invoke(AttackType.RightHanded);
         }
     }
 }

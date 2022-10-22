@@ -1,3 +1,4 @@
+using Combat;
 using Core;
 using Locomotion.Player;
 using UnityEngine;
@@ -63,9 +64,9 @@ namespace StateMachine.Player
             StateMachine.SwitchState(new PlayerJumpingState(StateMachine));
         }
 
-        private void HandleAttack(int attackIndex)
+        private void HandleAttack(AttackType attackType)
         {
-            StateMachine.SwitchState(new PlayerAttackingState(StateMachine, StateMachine.Fighter.GetAttack(attackIndex)));
+            StateMachine.SwitchState(new PlayerAttackingState(StateMachine, StateMachine.Fighter.GetAttack(attackType)));
         }
     }
 }

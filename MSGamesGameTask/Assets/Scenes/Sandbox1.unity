@@ -11973,14 +11973,6 @@ PrefabInstance:
       propertyPath: weaponSlots.Array.data[1]
       value: 
       objectReference: {fileID: 3312655944577417580}
-    - target: {fileID: 8269187209036728095, guid: 5cddc79616319ee4dabf99e4771a697e, type: 3}
-      propertyPath: attacks.Array.data[0].<AnimationName>k__BackingField
-      value: Attack2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8269187209036728095, guid: 5cddc79616319ee4dabf99e4771a697e, type: 3}
-      propertyPath: attacks.Array.data[1].<AnimationName>k__BackingField
-      value: Attack1
-      objectReference: {fileID: 0}
     - target: {fileID: 8688727147146230907, guid: 5cddc79616319ee4dabf99e4771a697e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.000000056112185
