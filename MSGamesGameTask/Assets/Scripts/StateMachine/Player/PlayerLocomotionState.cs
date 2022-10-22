@@ -63,9 +63,9 @@ namespace StateMachine.Player
             StateMachine.SwitchState(new PlayerJumpingState(StateMachine));
         }
 
-        private void HandleAttack()
+        private void HandleAttack(int attackIndex)
         {
-            StateMachine.SwitchState(new PlayerAttackingState(StateMachine, StateMachine.Fighter.GetAttack()));
+            StateMachine.SwitchState(new PlayerAttackingState(StateMachine, StateMachine.Fighter.GetAttack(attackIndex)));
         }
     }
 }

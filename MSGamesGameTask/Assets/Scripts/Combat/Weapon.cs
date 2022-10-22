@@ -6,9 +6,10 @@ namespace Combat
     public class Weapon : ScriptableObject
     {
         [SerializeField] private AnimatorOverrideController animatorOverride;
-        
         [Tooltip("Order has to be the same as in Fighter's weapon slots.")]
         [SerializeField] private WeaponEquippedController[] equippedPrefabs;
+        [SerializeField] private float damage = 1f;
+        [SerializeField] private Projectile projectile;
 
         public void Equip(Transform[] weaponSlots, Animator animator)
         {
@@ -38,5 +39,21 @@ namespace Combat
                 animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
             }
         }
+        
+        public void LunchProjectile()
+        {
+            Projectile projectileInstance = Instantiate(
+                projectile,
+                GetProjectileSpawnPoint().position,
+                Quaternion.identity);
+  
+            // projectileInstance.SetTarget(instigator, target, damage);
+        }
+
+        private Transform GetProjectileSpawnPoint()
+        {
+            return null;
+        }
+        
     }
 }

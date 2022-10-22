@@ -89,11 +89,11 @@ PrefabInstance:
     - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: weaponSlots.Array.data[0]
       value: 
-      objectReference: {fileID: 7459367348360828538}
+      objectReference: {fileID: 3164826360949692287}
     - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: weaponSlots.Array.data[1]
       value: 
-      objectReference: {fileID: 3164826360949692287}
+      objectReference: {fileID: 7459367348360828538}
     - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: attacks.Array.data[0].<NextComboAttackNormalizedTime>k__BackingField
       value: 0.7

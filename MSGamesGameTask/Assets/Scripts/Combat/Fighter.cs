@@ -17,10 +17,9 @@ namespace Combat
             EquipWeapon(defaultWeapon);
         }
 
-        public Attack GetAttack()
+        public Attack GetAttack(int attackIndex)
         {
-            int randomIndex = Random.Range(0, attacks.Length);
-            return attacks[randomIndex];
+            return attacks[attackIndex];
         }
         
         // Called by animation event

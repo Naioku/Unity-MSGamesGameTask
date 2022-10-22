@@ -33,9 +33,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
+                    "name": "AttackLeft",
                     "type": "Button",
                     "id": "f68986b6-f57a-478a-aba6-52005ec41bb2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AttackRight",
+                    "type": "Button",
+                    "id": "d8b78dcf-1fef-4d51-ba10-5fb1dad1e183",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -127,7 +136,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Attack",
+                    "action": "AttackLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3cb9dc1-e99c-4cda-a7ac-e1e088e5af03",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "AttackRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
