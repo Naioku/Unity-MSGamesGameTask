@@ -57,6 +57,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 731298330dd307e42850e57c7117b9de, type: 3}
+--- !u!4 &3164826360949692287 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7196394019458806150, guid: 731298330dd307e42850e57c7117b9de, type: 3}
+  m_PrefabInstance: {fileID: 5203068196418266873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7459367348360828538 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3436807137187426435, guid: 731298330dd307e42850e57c7117b9de, type: 3}
+  m_PrefabInstance: {fileID: 5203068196418266873}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7678784738260921218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,6 +78,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 2201896e2f249624881289b5913c3f4d, type: 2}
+    - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: weaponSlots.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: weaponSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 7459367348360828538}
+    - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: weaponSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 3164826360949692287}
     - target: {fileID: 2551966893679272829, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: m_Avatar
       value: 
