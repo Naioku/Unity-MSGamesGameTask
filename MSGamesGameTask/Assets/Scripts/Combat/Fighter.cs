@@ -19,8 +19,8 @@ namespace Combat
 
         public Attack GetAttack()
         {
-            // return random attack
-            return attacks[0];
+            int randomIndex = Random.Range(0, attacks.Length);
+            return attacks[randomIndex];
         }
         
         // Called by animation event

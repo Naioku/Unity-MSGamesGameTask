@@ -98,11 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b6582ba2cf4efdb539c39cd9773fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSlot: {fileID: 0}
-  secondSlot: {fileID: 0}
+  weaponSlots: []
   defaultWeapon: {fileID: 0}
   attacks:
   - <AnimationName>k__BackingField: Attack1
     <TransitionDuration>k__BackingField: 0.1
-  - <AnimationName>k__BackingField: Attack1
+    <NextComboAttackNormalizedTime>k__BackingField: 0
+  - <AnimationName>k__BackingField: Attack2
     <TransitionDuration>k__BackingField: 0.1
+    <NextComboAttackNormalizedTime>k__BackingField: 0
