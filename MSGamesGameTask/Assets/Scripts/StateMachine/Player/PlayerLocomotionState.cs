@@ -22,6 +22,7 @@ namespace StateMachine.Player
         public override void Enter()
         {
             StateMachine.InputReader.JumpEvent += HandleJump;
+            StateMachine.InputReader.AttackEvent += HandleAttack;
             
             StateMachine.Animator.CrossFadeInFixedTime(LocomotionStateHash, StateMachine.AnimationCrossFadeDuration);
         }
@@ -43,8 +44,9 @@ namespace StateMachine.Player
         public override void Exit()
         {
             StateMachine.InputReader.JumpEvent -= HandleJump;
+            StateMachine.InputReader.AttackEvent -= HandleAttack;
         }
-        
+
         private void UpdateAnimator(Vector3 movementGlobalDirection)
         {
             Vector3 movementLocalDirection = StateMachine.transform.InverseTransformDirection(movementGlobalDirection);
@@ -55,10 +57,15 @@ namespace StateMachine.Player
             StateMachine.Animator.SetFloat(ForwardMovementSpeedHash, movementForwardValue, StateMachine.AnimatorDampTime, Time.deltaTime);
             StateMachine.Animator.SetFloat(RightMovementSpeedHash, movementRightValue, StateMachine.AnimatorDampTime, Time.deltaTime);
         }
-        
+
         private void HandleJump()
         {
             StateMachine.SwitchState(new PlayerJumpingState(StateMachine));
+        }
+
+        private void HandleAttack()
+        {
+            StateMachine.SwitchState(new PlayerAttackingState(StateMachine, StateMachine.Fighter.GetAttack()));
         }
     }
 }

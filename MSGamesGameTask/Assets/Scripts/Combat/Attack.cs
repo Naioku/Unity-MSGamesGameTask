@@ -8,5 +8,6 @@ namespace Combat
     {
         [field: SerializeField] public string AnimationName { get; private set; }
         [field: SerializeField] public float TransitionDuration { get; private set; }
+        [field: SerializeField] public float NextComboAttackNormalizedTime { get; private set; }
     }
 }

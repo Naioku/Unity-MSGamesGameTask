@@ -17,15 +17,22 @@ namespace Combat
             EquipWeapon(defaultWeapon);
         }
 
+        public Attack GetAttack()
+        {
+            // return random attack
+            return attacks[0];
+        }
+        
+        // Called by animation event
+        public void Shoot(int weaponIndex)
+        {
+            print(weaponIndex);
+        }
+
         private void EquipWeapon(Weapon weapon)
         {
             weapon.Equip(weaponSlots, GetComponent<Animator>());
             _currentWeapon = weapon;
-        }
-
-        public void Shoot(int weaponIndex)
-        {
-            print(weaponIndex);
         }
     }
 }

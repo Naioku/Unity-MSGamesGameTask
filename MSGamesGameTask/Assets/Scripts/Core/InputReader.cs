@@ -7,6 +7,7 @@ namespace Core
     public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         public event Action JumpEvent; 
+        public event Action AttackEvent; 
         
         public Vector2 MovementValue { get; private set; }
         public Vector2 MousePosition { get; private set; }
@@ -34,6 +35,11 @@ namespace Core
         public void OnJump(InputAction.CallbackContext context)
         {
             JumpEvent?.Invoke();
+        }
+
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            AttackEvent?.Invoke();
         }
     }
 }

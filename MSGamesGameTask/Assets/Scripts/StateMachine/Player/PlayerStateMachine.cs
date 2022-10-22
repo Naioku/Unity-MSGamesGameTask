@@ -1,3 +1,4 @@
+using Combat;
 using Core;
 using Locomotion;
 using Locomotion.Player;
@@ -14,6 +15,7 @@ namespace StateMachine.Player
         public PlayerMover PlayerMover { get; private set; }
         public ForceReceiver ForceReceiver { get; private set; }
         public Animator Animator { get; private set; }
+        public Fighter Fighter { get; private set; }
 
         private void Awake()
         {
@@ -21,6 +23,7 @@ namespace StateMachine.Player
             PlayerMover = GetComponent<PlayerMover>();
             ForceReceiver = GetComponent<ForceReceiver>();
             Animator = GetComponent<Animator>();
+            Fighter = GetComponent<Fighter>();
         }
 
         private void Start()
