@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: KnightSwordAndShield
   m_EditorClassIdentifier: 
   animatorOverride: {fileID: 22100000, guid: 81789c4ad43a3ad4c9869d60a425d8c9, type: 2}
-  equippedWeapons:
+  weaponsToEquip:
   - attackType: 0
-    equippedPrefab: {fileID: -6783794875125643053, guid: 20b38e1663dabd648974cc09067b1585, type: 3}
+    prefab: {fileID: -6783794875125643053, guid: 20b38e1663dabd648974cc09067b1585, type: 3}
   - attackType: 1
-    equippedPrefab: {fileID: -2367943780447971858, guid: cd634cafb6025ab45ba7b2a795e3dab8, type: 3}
+    prefab: {fileID: -2367943780447971858, guid: cd634cafb6025ab45ba7b2a795e3dab8, type: 3}
   damage: 1
-  projectile: {fileID: 0}
+  projectile: {fileID: 762161672235371160, guid: de429f52168d379409472edeee63cb1c, type: 3}

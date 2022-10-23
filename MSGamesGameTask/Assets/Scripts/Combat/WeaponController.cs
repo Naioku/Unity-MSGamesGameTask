@@ -2,7 +2,7 @@
 
 namespace Combat
 {
-    public class WeaponEquippedController : MonoBehaviour
+    public class WeaponController : MonoBehaviour
     {
         [field: SerializeField] public Transform ProjectileSpawnPoint { get; private set; }
     }

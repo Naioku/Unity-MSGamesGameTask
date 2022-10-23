@@ -8,11 +8,12 @@ namespace Combat
     public class Weapon : ScriptableObject
     {
         [SerializeField] private AnimatorOverrideController animatorOverride;
-        [SerializeField] private EquippedWeapon[] equippedWeapons;
+        [SerializeField] private WeaponToEquip[] weaponsToEquip;
         [SerializeField] private float damage = 1f;
         [SerializeField] private Projectile projectile;
 
-        private Dictionary<AttackType, WeaponEquippedController> _equippedWeaponsLookup;
+        private Dictionary<AttackType, WeaponController> _weaponsToEquipLookup;
+        private readonly Dictionary<AttackType, WeaponController> _currentlyEquippedWeaponsLookup = new();
 
         public void Equip(Dictionary<AttackType, Attack> attacksLookup, Animator animator)
         {
@@ -23,21 +24,23 @@ namespace Combat
         private void SpawnPrefabs(Dictionary<AttackType, Attack> attacksLookup)
         {
             BuildLookup();
+            _currentlyEquippedWeaponsLookup.Clear();
             
-            foreach (var equippedWeapon in _equippedWeaponsLookup)
+            foreach (var equippedWeapon in _weaponsToEquipLookup)
             {
-                Instantiate(equippedWeapon.Value, attacksLookup[equippedWeapon.Key].WeaponSlot);
+                WeaponController instance = Instantiate(equippedWeapon.Value, attacksLookup[equippedWeapon.Key].WeaponSlot);
+                _currentlyEquippedWeaponsLookup.Add(equippedWeapon.Key, instance);
             }
         }
 
         private void BuildLookup()
         {
-            if (_equippedWeaponsLookup != null) return;
+            if (_weaponsToEquipLookup != null) return;
 
-            _equippedWeaponsLookup = new Dictionary<AttackType, WeaponEquippedController>();
-            foreach (EquippedWeapon weapon in equippedWeapons)
+            _weaponsToEquipLookup = new Dictionary<AttackType, WeaponController>();
+            foreach (WeaponToEquip weapon in weaponsToEquip)
             {
-                _equippedWeaponsLookup.Add(weapon.attackType, weapon.equippedPrefab);
+                _weaponsToEquipLookup.Add(weapon.attackType, weapon.prefab);
             }
         }
 
@@ -60,25 +63,23 @@ namespace Combat
                 projectile,
                 GetProjectileSpawnPoint(attackType, weaponSlot).position,
                 Quaternion.identity);
-  
-            // projectileInstance.SetTarget(instigator, target, damage);
         }
 
         private Transform GetProjectileSpawnPoint(AttackType attackType, Transform weaponSlot)
         {
             BuildLookup();
+
+            WeaponController weapon = _currentlyEquippedWeaponsLookup[attackType];
+            Transform projectileSpawnPoint = weapon.ProjectileSpawnPoint;
             
-            WeaponEquippedController weaponEquippedController = _equippedWeaponsLookup[attackType];
-            Transform projectileSpawnPoint = weaponEquippedController.ProjectileSpawnPoint;
-           
             return projectileSpawnPoint != null ? projectileSpawnPoint : weaponSlot;
         }
     }
 
     [Serializable]
-    internal class EquippedWeapon
+    internal class WeaponToEquip
     {
         public AttackType attackType;
-        public WeaponEquippedController equippedPrefab;
+        public WeaponController prefab;
     }
 }

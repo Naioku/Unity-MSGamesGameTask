@@ -25,8 +25,7 @@ namespace Combat
         // Called by animation event
         public void Shoot(AttackType attackType)
         {
-            // _currentWeapon.LunchProjectile(attackType, _attacksLookup[attackType].WeaponSlot);
-            print(attackType.ToString());
+            _currentWeapon.LunchProjectile(attackType, _attacksLookup[attackType].WeaponSlot);
         }
 
         private void BuildAttacksLookup()
@@ -43,6 +42,7 @@ namespace Combat
         private void EquipWeapon(Weapon weapon)
         {
             BuildAttacksLookup();
+            
             weapon.Equip(_attacksLookup, GetComponent<Animator>());
             _currentWeapon = weapon;
         }
