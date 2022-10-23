@@ -83,6 +83,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2201896e2f249624881289b5913c3f4d, type: 2}
     - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: defaultWeaponSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2201896e2f249624881289b5913c3f4d, type: 2}
+    - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: weaponSlots.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -106,6 +110,14 @@ PrefabInstance:
       propertyPath: attacks.Array.data[1].<WeaponSlot>k__BackingField
       value: 
       objectReference: {fileID: 3164826360949692287}
+    - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: attacks.Array.data[0].<AttackSlotType>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: attacks.Array.data[1].<AttackSlotType>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1752617124975422621, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: attacks.Array.data[0].<NextComboAttackNormalizedTime>k__BackingField
       value: 0.7

@@ -8,7 +8,7 @@ namespace Core
     public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         public event Action JumpEvent; 
-        public event Action<AttackType> AttackEvent; 
+        public event Action<AttackSlotType> AttackEvent; 
         
         public Vector2 MovementValue { get; private set; }
         public Vector3 MouseWorldPosition { get; private set; }
@@ -45,12 +45,12 @@ namespace Core
 
         public void OnAttackLeft(InputAction.CallbackContext context)
         {
-            AttackEvent?.Invoke(AttackType.LeftHanded);
+            AttackEvent?.Invoke(AttackSlotType.LeftHand);
         }
 
         public void OnAttackRight(InputAction.CallbackContext context)
         {
-            AttackEvent?.Invoke(AttackType.RightHanded);
+            AttackEvent?.Invoke(AttackSlotType.RightHand);
         }
 
         private void UpdateMouseWorldPosition(Vector2 mouseScreenPosition)

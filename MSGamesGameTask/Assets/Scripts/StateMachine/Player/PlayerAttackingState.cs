@@ -34,7 +34,7 @@ namespace StateMachine.Player
             StateMachine.InputReader.AttackEvent -= HandleAttack;
         }
         
-        private void HandleAttack(AttackType attackType)
+        private void HandleAttack(AttackSlotType attackSlotType)
         {
             if (!ReadyForNextAttack(GetNormalizedAnimationTime(StateMachine.Animator, "Attack")))
             {
@@ -44,7 +44,7 @@ namespace StateMachine.Player
             
             if (_isComboBroken) return;
             
-            StateMachine.SwitchState(new PlayerAttackingState(StateMachine, StateMachine.Fighter.GetAttack(attackType)));
+            StateMachine.SwitchState(new PlayerAttackingState(StateMachine, StateMachine.Fighter.GetAttack(attackSlotType)));
         }
 
         private bool ReadyForNextAttack(float normalizedAnimationTime)

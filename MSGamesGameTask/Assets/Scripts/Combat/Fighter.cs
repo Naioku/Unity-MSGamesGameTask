@@ -1,58 +1,55 @@
 ﻿using System.Collections.Generic;
-using Core;
 using UnityEngine;
 
 namespace Combat
 {
     public class Fighter: MonoBehaviour
     {
-        [SerializeField] private Weapon defaultWeapon;
+        [SerializeField] private WeaponSO defaultWeaponSo;
         [SerializeField] private Attack[] attacks = new Attack[2];
 
-        private Dictionary<AttackType, Attack> _attacksLookup;
-        private Weapon _currentWeapon;
+        private Dictionary<AttackSlotType, Attack> _attacksLookup;
+        private WeaponSet _currentWeapon;
 
         private void Start()
         {
-            EquipWeapon(defaultWeapon);
+            EquipWeapon(defaultWeaponSo);
         }
 
-        public Attack GetAttack(AttackType attackType)
+        public Attack GetAttack(AttackSlotType attackSlotType)
         {
             BuildAttacksLookup();
-            return _attacksLookup[attackType];
+            return _attacksLookup[attackSlotType];
         }
         
         // Called by animation event
-        public void Shoot(AttackType attackType)
+        public void Shoot(AttackSlotType attackSlotType)
         {
-            Vector3 mouseWorldPosition = GetComponent<InputReader>().MouseWorldPosition;
-            _currentWeapon.LunchProjectile(attackType, _attacksLookup[attackType].WeaponSlot, transform.forward);
+            _currentWeapon.LunchProjectile(attackSlotType, _attacksLookup[attackSlotType].WeaponSlot, transform.forward);
         }
 
         private void BuildAttacksLookup()
         {
             if (_attacksLookup != null) return;
 
-            _attacksLookup = new Dictionary<AttackType, Attack>();
+            _attacksLookup = new Dictionary<AttackSlotType, Attack>();
             foreach (Attack attack in attacks)
             {
-                _attacksLookup.Add(attack.AttackType, attack);
+                _attacksLookup.Add(attack.AttackSlotType, attack);
             }
         }
 
-        private void EquipWeapon(Weapon weapon)
+        private void EquipWeapon(WeaponSO weaponSo)
         {
             BuildAttacksLookup();
             
-            weapon.Equip(_attacksLookup, GetComponent<Animator>());
-            _currentWeapon = weapon;
+            _currentWeapon = weaponSo.Equip(_attacksLookup, GetComponent<Animator>());
         }
     }
 
-    public enum AttackType
+    public enum AttackSlotType
     {
-        LeftHanded,
-        RightHanded
+        LeftHand,
+        RightHand
     }
 }

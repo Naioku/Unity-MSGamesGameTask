@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Unarmed
   m_EditorClassIdentifier: 
   animatorOverride: {fileID: 0}
-  equippedPrefabLeftHand: {fileID: -2008768784964851456, guid: f73b09a4a64ad2742adf404d0a23ecce, type: 3}
-  equippedPrefabRightHand: {fileID: 0}
-  weaponDamage: 1
-  isAttackFromRightHand: 0
-  projectile: {fileID: 0}
+  weaponsToEquip:
+  - attackSlotType: 0
+    prefab: {fileID: -2008768784964851456, guid: f73b09a4a64ad2742adf404d0a23ecce, type: 3}
+  - attackSlotType: 1
+    prefab: {fileID: -2008768784964851456, guid: f73b09a4a64ad2742adf404d0a23ecce, type: 3}
+  damage: 1
+  projectile: {fileID: 762161672235371160, guid: de429f52168d379409472edeee63cb1c, type: 3}
