@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core;
 using UnityEngine;
 
 namespace Combat
@@ -25,7 +26,8 @@ namespace Combat
         // Called by animation event
         public void Shoot(AttackType attackType)
         {
-            _currentWeapon.LunchProjectile(attackType, _attacksLookup[attackType].WeaponSlot);
+            Vector3 mouseWorldPosition = GetComponent<InputReader>().MouseWorldPosition;
+            _currentWeapon.LunchProjectile(attackType, _attacksLookup[attackType].WeaponSlot, transform.forward);
         }
 
         private void BuildAttacksLookup()

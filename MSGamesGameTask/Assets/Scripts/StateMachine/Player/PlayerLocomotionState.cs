@@ -39,7 +39,7 @@ namespace StateMachine.Player
             _playerMover.MoveWithDefaultSpeed(movementDirection);
             UpdateAnimator(movementDirection);
             
-            _playerMover.FaceCharacterToPosition(_inputReader.MousePosition);
+            _playerMover.FaceCharacterToPosition(_inputReader.MouseWorldPosition);
         }
 
         public override void Exit()

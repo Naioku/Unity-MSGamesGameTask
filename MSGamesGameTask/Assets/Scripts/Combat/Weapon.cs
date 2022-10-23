@@ -57,12 +57,14 @@ namespace Combat
             }
         }
         
-        public void LunchProjectile(AttackType attackType, Transform weaponSlot)
+        public void LunchProjectile(AttackType attackType, Transform weaponSlot, Vector3 attackDirection)
         {
             Projectile projectileInstance = Instantiate(
                 projectile,
                 GetProjectileSpawnPoint(attackType, weaponSlot).position,
                 Quaternion.identity);
+            
+            projectileInstance.SetDirection(attackDirection);
         }
 
         private Transform GetProjectileSpawnPoint(AttackType attackType, Transform weaponSlot)

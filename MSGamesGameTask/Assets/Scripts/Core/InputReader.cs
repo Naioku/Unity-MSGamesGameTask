@@ -11,7 +11,10 @@ namespace Core
         public event Action<AttackType> AttackEvent; 
         
         public Vector2 MovementValue { get; private set; }
-        public Vector2 MousePosition { get; private set; }
+        public Vector3 MouseWorldPosition { get; private set; }
+        
+        [SerializeField] private float maxRaycastDistance = 40f;
+        [SerializeField] private LayerMask searchingLayers;
         
         private Controls _controls;
 
@@ -22,7 +25,7 @@ namespace Core
 
             _controls.Player.Enable();
         }
-
+        
         public void OnMove(InputAction.CallbackContext context)
         {
             MovementValue = context.ReadValue<Vector2>();
@@ -30,7 +33,9 @@ namespace Core
 
         public void OnMoveMouse(InputAction.CallbackContext context)
         {
-            MousePosition = context.ReadValue<Vector2>();
+            Vector2 mouseScreenPosition = context.ReadValue<Vector2>();
+
+            UpdateMouseWorldPosition(mouseScreenPosition);
         }
 
         public void OnJump(InputAction.CallbackContext context)
@@ -46,6 +51,24 @@ namespace Core
         public void OnAttackRight(InputAction.CallbackContext context)
         {
             AttackEvent?.Invoke(AttackType.RightHanded);
+        }
+
+        private void UpdateMouseWorldPosition(Vector2 mouseScreenPosition)
+        {
+            bool hasHit = Physics.Raycast(
+                GetMouseRay(mouseScreenPosition),
+                out RaycastHit hit,
+                maxRaycastDistance,
+                searchingLayers);
+            
+            if (!hasHit) return;
+
+            MouseWorldPosition = hit.point;
+        }
+
+        private static Ray GetMouseRay(Vector2 mousePosition)
+        {
+            return Camera.main.ScreenPointToRay(mousePosition);
         }
     }
 }

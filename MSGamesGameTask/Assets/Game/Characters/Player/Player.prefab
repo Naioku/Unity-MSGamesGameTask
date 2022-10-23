@@ -202,6 +202,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3601d18a8ab8a8c4c86e5e07a1c81940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxRaycastDistance: 40
+  searchingLayers:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &4802927720010075469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +234,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSpeed: 10
   jumpVelocity: 15
-  maxRaycastDistance: 40
-  searchingLayers:
-    serializedVersion: 2
-    m_Bits: 64
