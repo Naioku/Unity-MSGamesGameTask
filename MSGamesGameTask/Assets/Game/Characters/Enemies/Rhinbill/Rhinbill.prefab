@@ -57,6 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd82e72903e56141a3b211e56aecf2c, type: 3}
+--- !u!4 &8937504244328633216 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6470927653359866049, guid: abd82e72903e56141a3b211e56aecf2c, type: 3}
+  m_PrefabInstance: {fileID: 2721650455251075905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8160852664885002294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64,6 +69,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7974610030235363045, guid: 2acdf3031f37f134a96fa4d551f0d296, type: 3}
+      propertyPath: defaultWeaponSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d95cd516426f6141b5d1692b8b40ae6, type: 2}
+    - target: {fileID: -7974610030235363045, guid: 2acdf3031f37f134a96fa4d551f0d296, type: 3}
+      propertyPath: attacks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7974610030235363045, guid: 2acdf3031f37f134a96fa4d551f0d296, type: 3}
+      propertyPath: attacks.Array.data[0].<WeaponSlot>k__BackingField
+      value: 
+      objectReference: {fileID: 8937504244328633216}
+    - target: {fileID: -7974610030235363045, guid: 2acdf3031f37f134a96fa4d551f0d296, type: 3}
+      propertyPath: attacks.Array.data[0].<AnimationName>k__BackingField
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: -7974610030235363045, guid: 2acdf3031f37f134a96fa4d551f0d296, type: 3}
+      propertyPath: attacks.Array.data[0].<AttackSlotType>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 504026999457444088, guid: 2acdf3031f37f134a96fa4d551f0d296, type: 3}
       propertyPath: m_Avatar
       value: 

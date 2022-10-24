@@ -50,6 +50,7 @@ namespace Combat
     public enum AttackSlotType
     {
         LeftHand,
-        RightHand
+        RightHand,
+        Mouth
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
@@ -20,6 +21,11 @@ namespace Locomotion.AI
         private float _timeSinceArrivedAtWaypoint = Mathf.Infinity;
         private Vector3 _currentWaypointPosition;
 
+        private void Start()
+        {
+            _currentWaypointPosition = transform.position;
+        }
+
         private void OnDrawGizmos()
         {
             DrawRange();
@@ -33,8 +39,7 @@ namespace Locomotion.AI
         
         public bool AtWaypoint(Vector3 position)
         {
-            float distanceToWaypointSquared = Vector3.SqrMagnitude(position - transform.position);
-            return distanceToWaypointSquared <= waypointTolerance * waypointTolerance;
+            return AIMover.IsDestinationReached(transform.position, position, waypointTolerance);
         }
 
         public void ResetDwellingTimer()

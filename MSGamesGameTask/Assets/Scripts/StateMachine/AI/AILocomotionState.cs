@@ -1,4 +1,5 @@
-﻿using Locomotion.AI;
+﻿using System.Collections.Generic;
+using Locomotion.AI;
 using UnityEngine;
 
 namespace StateMachine.AI
@@ -20,6 +21,8 @@ namespace StateMachine.AI
         public override void Enter()
         {
             StateMachine.Animator.CrossFadeInFixedTime(LocomotionStateHash, StateMachine.AnimationCrossFadeDuration);
+
+            StateMachine.AISensor.TargetDetectedEvent += HandleTargetDetection;
         }
 
         public override void Tick()
@@ -61,6 +64,12 @@ namespace StateMachine.AI
 
         public override void Exit()
         {
+            StateMachine.AISensor.TargetDetectedEvent -= HandleTargetDetection;
+        }
+
+        private void HandleTargetDetection(List<Transform> detectedTargets)
+        {
+            StateMachine.SwitchState(new AIChasingState(StateMachine, detectedTargets));
         }
     }
 }
