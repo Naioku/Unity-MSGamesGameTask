@@ -20,14 +20,18 @@ namespace Combat
             _damage = damage;
         }
         
-        public void LunchProjectile(AttackSlotType attackSlotType, Transform weaponSlot, Vector3 attackDirection)
+        public void LunchProjectile(
+            AttackSlotType attackSlotType,
+            Transform weaponSlot,
+            Vector3 attackDirection,
+            int casterLayer)
         {
             Projectile projectileInstance = Object.Instantiate(
                 _projectile,
                 GetProjectileSpawnPoint(attackSlotType, weaponSlot).position,
                 Quaternion.identity);
             
-            projectileInstance.Prepare(attackDirection, _damage);
+            projectileInstance.Prepare(attackDirection, _damage, casterLayer);
         }
         
         private Transform GetProjectileSpawnPoint(AttackSlotType attackSlotType, Transform weaponSlot)

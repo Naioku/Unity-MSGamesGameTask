@@ -11,24 +11,29 @@ namespace Combat
         [SerializeField] private float lifeAfterImpact = 2f;
 
         private float _damage;
+        private int _casterLayer;
 
         private void Update()
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
 
-        public void Prepare(Vector3 direction, float damage)
+        public void Prepare(Vector3 direction, float damage, int casterLayer)
         {
             SetDirection(direction);
             SetDamage(damage);
+            SetCasterLayer(casterLayer);
             Destroy(gameObject, lifeTime);
         }
 
         private void SetDirection(Vector3 direction) => transform.forward = direction;
         private void SetDamage(float damage) => _damage = damage;
+        private void SetCasterLayer(LayerMask casterLayer) => _casterLayer = casterLayer;
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.gameObject.layer == _casterLayer) return;
+            
             speed = 0f;
             
             if (hitEffect != null)

@@ -25,7 +25,7 @@ namespace Combat
         // Called by animation event
         public void Shoot(AttackSlotType attackSlotType)
         {
-            _currentWeapon.LunchProjectile(attackSlotType, _attacksLookup[attackSlotType].WeaponSlot, transform.forward);
+            _currentWeapon.LunchProjectile(attackSlotType, _attacksLookup[attackSlotType].WeaponSlot, transform.forward, gameObject.layer);
         }
 
         private void BuildAttacksLookup()
