@@ -10,7 +10,6 @@ namespace StateMachine.AI
         private static readonly int MovementSpeedHash = Animator.StringToHash("MovementSpeed");
         
         private readonly List<Transform> _detectedTargets;
-        private Transform _currentTarget;
         private Vector3 _lastSeenTargetPosition;
 
         public AIChasingState(AIStateMachine stateMachine, List<Transform> detectedTargets) : base(stateMachine)
@@ -26,10 +25,9 @@ namespace StateMachine.AI
         public override void Tick()
         {
             StateMachine.Animator.SetFloat(MovementSpeedHash, 1f, StateMachine.AnimatorDampTime, Time.deltaTime);
+            Transform currentTarget = GetClosestReachableTarget();
             
-            _currentTarget = GetClosestReachableTarget();
-
-            if (_currentTarget == null)
+            if (currentTarget == null)
             {
                 if (!StateMachine.AIMover.MoveToPosition(_lastSeenTargetPosition) ||
                     AIMover.IsDestinationReached(
@@ -44,11 +42,15 @@ namespace StateMachine.AI
                 return;
             }
             
-            _lastSeenTargetPosition = _currentTarget.position;
+            _lastSeenTargetPosition = currentTarget.position;
             
             if (StateMachine.AIFighter.IsInAttackRange(_lastSeenTargetPosition))
             {
-                StateMachine.SwitchState(new AIAttackingState(StateMachine, StateMachine.AIFighter.GetRandomAttack()));
+                Vector3 directionTowardsTarget = currentTarget.position - StateMachine.transform.position;
+                StateMachine.SwitchState(new AIRotationState(
+                    StateMachine,
+                    directionTowardsTarget,
+                    new AIAttackingState(StateMachine, StateMachine.AIFighter.GetRandomAttack())));
                 return;
             }
             
