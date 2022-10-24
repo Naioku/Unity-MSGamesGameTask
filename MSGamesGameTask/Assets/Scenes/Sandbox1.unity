@@ -11139,6 +11139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rhinbill
       objectReference: {fileID: 0}
+    - target: {fileID: 6823595207506535683, guid: a2f4dc3492d1a3d4ab01bc190707ed63, type: 3}
+      propertyPath: dwellingTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6923530366104410413, guid: a2f4dc3492d1a3d4ab01bc190707ed63, type: 3}
       propertyPath: attacks.Array.data[0].<AttackerDisplacement>k__BackingField
       value: 5

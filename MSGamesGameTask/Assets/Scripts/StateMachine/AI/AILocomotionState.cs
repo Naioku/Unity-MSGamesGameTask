@@ -51,12 +51,14 @@ namespace StateMachine.AI
             
                 _aiPatroller.UpdateTimer();
             }
-
-            if (!_aiPatroller.AtWaypoint(StateMachine.GuardingPosition))
+            else
             {
-                if (!_aiMover.MoveToPosition(_aiPatroller.GetCurrentWaypointPosition()))
+                if (!_aiPatroller.AtWaypoint(StateMachine.GuardingPosition))
                 {
-                    StateMachine.GuardingPosition = StateMachine.transform.position;
+                    if (!_aiMover.MoveToPosition(_aiPatroller.GetCurrentWaypointPosition()))
+                    {
+                        StateMachine.GuardingPosition = StateMachine.transform.position;
+                    }
                 }
             }
         }

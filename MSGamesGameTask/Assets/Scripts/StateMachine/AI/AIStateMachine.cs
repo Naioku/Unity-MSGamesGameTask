@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Combat;
 using Combat.AI;
 using Locomotion;
 using Locomotion.AI;
@@ -23,6 +24,8 @@ namespace StateMachine.AI
         public AISensor AISensor { get; private set; }
         public ForceReceiver ForceReceiver { get; private set; }
 
+        private Health _health;
+        
         private void Awake()
         {
             Animator = GetComponent<Animator>();
@@ -31,6 +34,7 @@ namespace StateMachine.AI
             AIFighter = GetComponent<AIFighter>();
             AISensor = GetComponent<AISensor>();
             ForceReceiver = GetComponent<ForceReceiver>();
+            _health = GetComponent<Health>();
         }
 
         private void Start()
@@ -42,11 +46,13 @@ namespace StateMachine.AI
         private void OnEnable()
         {
             AISensor.TargetDetectedEvent += HandleTargetDetection;
+            _health.TakeDamageEvent += HandleTakeDamage;
         }
 
         private void OnDisable()
         {
             AISensor.TargetDetectedEvent -= HandleTargetDetection;
+            _health.TakeDamageEvent -= HandleTakeDamage;
         }
 
         private new void Update()
@@ -54,7 +60,7 @@ namespace StateMachine.AI
             base.Update();
             print("CurrentTarget: " + CurrentTarget);
         }
-        
+
         private void HandleTargetDetection(List<Transform> detectedTargets)
         {
             DetectedTargets = detectedTargets;
@@ -63,6 +69,11 @@ namespace StateMachine.AI
             {
                 CurrentTarget = null;
             }
+        }
+
+        private void HandleTakeDamage(Vector3 hitDirection)
+        {
+            SwitchState(new AIImpactState(this, hitDirection));
         }
     }
 }
