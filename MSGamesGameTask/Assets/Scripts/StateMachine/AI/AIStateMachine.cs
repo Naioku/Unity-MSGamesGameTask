@@ -1,4 +1,5 @@
-﻿using Combat.AI;
+﻿using System.Collections.Generic;
+using Combat.AI;
 using Locomotion;
 using Locomotion.AI;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace StateMachine.AI
         [field: SerializeField] public float SuspicionTime { get; set; } = 1f;
         
         public Vector3 GuardingPosition { get; set; }
+        public Transform CurrentTarget { get; set; }
+        public List<Transform> DetectedTargets { get; private set; }
         public Animator Animator { get; private set; }
         public AIMover AIMover { get; private set; }
         public AIPatroller AIPatroller { get; private set; }
@@ -34,6 +37,32 @@ namespace StateMachine.AI
         {
             GuardingPosition = transform.position;
             SwitchState(new AILocomotionState(this));
+        }
+
+        private void OnEnable()
+        {
+            AISensor.TargetDetectedEvent += HandleTargetDetection;
+        }
+
+        private void OnDisable()
+        {
+            AISensor.TargetDetectedEvent -= HandleTargetDetection;
+        }
+
+        private new void Update()
+        {
+            base.Update();
+            print("CurrentTarget: " + CurrentTarget);
+        }
+        
+        private void HandleTargetDetection(List<Transform> detectedTargets)
+        {
+            DetectedTargets = detectedTargets;
+            
+            if (!DetectedTargets.Contains(CurrentTarget))
+            {
+                CurrentTarget = null;
+            }
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Locomotion.AI;
+﻿using Locomotion.AI;
 using UnityEngine;
 
 namespace StateMachine.AI
@@ -9,13 +8,9 @@ namespace StateMachine.AI
         private static readonly int LocomotionStateHash = Animator.StringToHash("Locomotion");
         private static readonly int MovementSpeedHash = Animator.StringToHash("MovementSpeed");
         
-        private readonly List<Transform> _detectedTargets;
         private Vector3 _lastSeenTargetPosition;
 
-        public AIChasingState(AIStateMachine stateMachine, List<Transform> detectedTargets) : base(stateMachine)
-        {
-            _detectedTargets = detectedTargets;
-        }
+        public AIChasingState(AIStateMachine stateMachine) : base(stateMachine) {}
         
         public override void Enter()
         {
@@ -25,9 +20,9 @@ namespace StateMachine.AI
         public override void Tick()
         {
             StateMachine.Animator.SetFloat(MovementSpeedHash, 1f, StateMachine.AnimatorDampTime, Time.deltaTime);
-            Transform currentTarget = GetClosestReachableTarget();
+            StateMachine.CurrentTarget = GetClosestReachableTarget();
             
-            if (currentTarget == null)
+            if (StateMachine.CurrentTarget == null)
             {
                 if (!StateMachine.AIMover.MoveToPosition(_lastSeenTargetPosition) ||
                     AIMover.IsDestinationReached(
@@ -42,15 +37,11 @@ namespace StateMachine.AI
                 return;
             }
             
-            _lastSeenTargetPosition = currentTarget.position;
+            _lastSeenTargetPosition = StateMachine.CurrentTarget.position;
             
             if (StateMachine.AIFighter.IsInAttackRange(_lastSeenTargetPosition))
             {
-                Vector3 directionTowardsTarget = currentTarget.position - StateMachine.transform.position;
-                StateMachine.SwitchState(new AIRotationState(
-                    StateMachine,
-                    directionTowardsTarget,
-                    new AIAttackingState(StateMachine, StateMachine.AIFighter.GetRandomAttack())));
+                StateMachine.SwitchState(new AICombatState(StateMachine));
                 return;
             }
             
@@ -63,26 +54,6 @@ namespace StateMachine.AI
 
         public override void Exit()
         {
-        }
-        
-        private Transform GetClosestReachableTarget()
-        {
-            Vector3 aiPosition = StateMachine.transform.position;
-            Transform closestTarget = null;
-            float distanceToClosestTargetSquared = Mathf.Infinity;
-            foreach (Transform detectedTarget in _detectedTargets)
-            {
-                if(!StateMachine.AIMover.IsPositionReachable(detectedTarget.position)) continue;
-                
-                float distanceToTargetSquared = Vector3.SqrMagnitude(detectedTarget.position - aiPosition);
-                if (distanceToTargetSquared < distanceToClosestTargetSquared)
-                {
-                    distanceToClosestTargetSquared = distanceToTargetSquared;
-                    closestTarget = detectedTarget;
-                }
-            }
-        
-            return closestTarget;
         }
     }
 }

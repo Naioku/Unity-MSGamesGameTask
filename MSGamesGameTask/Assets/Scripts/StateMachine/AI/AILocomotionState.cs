@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Locomotion.AI;
+﻿using Locomotion.AI;
 using UnityEngine;
 
 namespace StateMachine.AI

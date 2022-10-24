@@ -101,6 +101,7 @@ MonoBehaviour:
     <AttackerDisplacementSmoothingTime>k__BackingField: 0.1
     <DisplacementApplicationNormalizedTime>k__BackingField: 0.1
   attackRange: 10
+  <DelayBetweenAttacks>k__BackingField: 1
 --- !u!114 &-5661407015107090642
 MonoBehaviour:
   m_ObjectHideFlags: 0
