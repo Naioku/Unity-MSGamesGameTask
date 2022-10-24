@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0cd85746c3c93a44add07510d283c0a, type: 3}
+  m_Name: KnightSwordAndShield
+  m_EditorClassIdentifier: 
+  animatorOverride: {fileID: 22100000, guid: 81789c4ad43a3ad4c9869d60a425d8c9, type: 2}
+  weaponsToEquip:
+  - attackSlotType: 0
+    prefab: {fileID: -6783794875125643053, guid: 20b38e1663dabd648974cc09067b1585, type: 3}
+  - attackSlotType: 1
+    prefab: {fileID: -2367943780447971858, guid: cd634cafb6025ab45ba7b2a795e3dab8, type: 3}
+  damage: 1
+  projectile: {fileID: 762161672235371160, guid: de429f52168d379409472edeee63cb1c, type: 3}
