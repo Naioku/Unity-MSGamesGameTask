@@ -31,7 +31,7 @@ namespace Combat
                 weaponsInstancesLookup.Add(equippedWeapon.Key, instance);
             }
 
-            return new WeaponSet(weaponsInstancesLookup, projectile);
+            return new WeaponSet(weaponsInstancesLookup, projectile, damage);
         }
 
         private void BuildLookup()

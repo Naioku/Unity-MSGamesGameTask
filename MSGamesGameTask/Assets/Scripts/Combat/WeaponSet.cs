@@ -7,11 +7,17 @@ namespace Combat
     {
         private readonly Dictionary<AttackSlotType, WeaponController> _currentlyEquippedWeaponsLookup;
         private readonly Projectile _projectile;
+        private readonly float _damage;
 
-        public WeaponSet(Dictionary<AttackSlotType, WeaponController> currentlyEquippedWeaponsLookup, Projectile projectile)
+        public WeaponSet(
+            Dictionary<AttackSlotType,
+            WeaponController> currentlyEquippedWeaponsLookup,
+            Projectile projectile,
+            float damage)
         {
             _currentlyEquippedWeaponsLookup = currentlyEquippedWeaponsLookup;
             _projectile = projectile;
+            _damage = damage;
         }
         
         public void LunchProjectile(AttackSlotType attackSlotType, Transform weaponSlot, Vector3 attackDirection)
@@ -21,7 +27,7 @@ namespace Combat
                 GetProjectileSpawnPoint(attackSlotType, weaponSlot).position,
                 Quaternion.identity);
             
-            projectileInstance.Prepare(attackDirection);
+            projectileInstance.Prepare(attackDirection, _damage);
         }
         
         private Transform GetProjectileSpawnPoint(AttackSlotType attackSlotType, Transform weaponSlot)

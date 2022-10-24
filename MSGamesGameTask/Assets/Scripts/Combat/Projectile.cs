@@ -10,23 +10,23 @@ namespace Combat
         [SerializeField] private GameObject[] destroyOnHit;
         [SerializeField] private float lifeAfterImpact = 2f;
 
+        private float _damage;
 
         private void Update()
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
 
-        public void Prepare(Vector3 direction)
+        public void Prepare(Vector3 direction, float damage)
         {
             SetDirection(direction);
+            SetDamage(damage);
             Destroy(gameObject, lifeTime);
         }
 
-        private void SetDirection(Vector3 direction)
-        {
-            transform.forward = direction;
-        }
-        
+        private void SetDirection(Vector3 direction) => transform.forward = direction;
+        private void SetDamage(float damage) => _damage = damage;
+
         private void OnTriggerEnter(Collider other)
         {
             speed = 0f;
@@ -42,6 +42,9 @@ namespace Combat
             }
             
             Destroy(gameObject, lifeAfterImpact);
+
+            if (!other.TryGetComponent(out Health health)) return;
+            health.TakeDamage(_damage);
         }
     }
 }
