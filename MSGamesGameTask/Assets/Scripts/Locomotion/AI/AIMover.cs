@@ -31,6 +31,12 @@ namespace Locomotion.AI
         {
             ClampRotationSpeedToBeGreaterThan0();
         }
+        
+        public static bool IsDestinationReached(Vector3 startingPosition, Vector3 destination, float tolerance)
+        {
+            float distanceToWaypointSquared = Vector3.SqrMagnitude(destination - startingPosition);
+            return distanceToWaypointSquared <= tolerance * tolerance;
+        }
 
         public void DisableMovement()
         {

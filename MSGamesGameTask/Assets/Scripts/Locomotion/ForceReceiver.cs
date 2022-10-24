@@ -12,6 +12,9 @@ namespace Locomotion
 
         private CharacterController _characterController;
         private float _verticalVelocity;
+        private float _impactSmoothingTime;
+        private Vector3 _impact;
+        private Vector3 _dampingVelocity;
         
         private float UnitaryAcceleration => Physics.gravity.y * gravityAmplifier * Time.deltaTime;
 
@@ -30,11 +33,24 @@ namespace Locomotion
             {
                 _verticalVelocity += UnitaryAcceleration;
             }
+            
+            _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _dampingVelocity, _impactSmoothingTime);
+
+            if (_impact.sqrMagnitude < 0.2f * 0.2f)
+            {
+                _impact = Vector3.zero;
+            }
         }
         
         internal void Jump(float jumpVelocity)
         {
             _verticalVelocity += jumpVelocity;
+        }
+        
+        public void AddForce(Vector3 force, float impactSmoothingTime)
+        {
+            _impactSmoothingTime = impactSmoothingTime;
+            _impact += force;
         }
     }
 }

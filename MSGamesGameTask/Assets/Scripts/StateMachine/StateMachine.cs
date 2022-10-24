@@ -6,7 +6,7 @@ namespace StateMachine
     {
         private State _currentState;
 
-        private void Update()
+        protected void Update()
         {
             _currentState?.Tick();
         }

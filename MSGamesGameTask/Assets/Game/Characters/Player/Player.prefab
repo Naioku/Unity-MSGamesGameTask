@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2013558266614912899, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: currentValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 44238303482392850, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: m_Name
       value: Player
@@ -178,3 +182,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSpeed: 10
   jumpVelocity: 15
+--- !u!114 &7434058545656433109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7641953850252008080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b6582ba2cf4efdb539c39cd9773fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultWeaponSo: {fileID: 11400000, guid: 2201896e2f249624881289b5913c3f4d, type: 2}
+  attacks:
+  - <AnimationName>k__BackingField: Attack1
+    <AttackSlotType>k__BackingField: 1
+    <WeaponSlot>k__BackingField: {fileID: 0}
+    <TransitionDuration>k__BackingField: 0.1
+    <NextComboAttackNormalizedTime>k__BackingField: 0.7
+    <AttackerDisplacement>k__BackingField: 0
+    <AttackerDisplacementSmoothingTime>k__BackingField: 0.1
+    <DisplacementApplicationNormalizedTime>k__BackingField: 0.1
+  - <AnimationName>k__BackingField: Attack2
+    <AttackSlotType>k__BackingField: 0
+    <WeaponSlot>k__BackingField: {fileID: 0}
+    <TransitionDuration>k__BackingField: 0.1
+    <NextComboAttackNormalizedTime>k__BackingField: 0.7
+    <AttackerDisplacement>k__BackingField: 0
+    <AttackerDisplacementSmoothingTime>k__BackingField: 0.1
+    <DisplacementApplicationNormalizedTime>k__BackingField: 0.1
