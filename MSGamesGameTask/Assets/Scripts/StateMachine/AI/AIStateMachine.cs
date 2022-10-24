@@ -1,4 +1,5 @@
 ﻿using Combat.AI;
+using Locomotion;
 using Locomotion.AI;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace StateMachine.AI
         public AIPatroller AIPatroller { get; private set; }
         public AIFighter AIFighter { get; private set; }
         public AISensor AISensor { get; private set; }
+        public ForceReceiver ForceReceiver { get; private set; }
 
         private void Awake()
         {
@@ -25,6 +27,7 @@ namespace StateMachine.AI
             AIPatroller = GetComponent<AIPatroller>();
             AIFighter = GetComponent<AIFighter>();
             AISensor = GetComponent<AISensor>();
+            ForceReceiver = GetComponent<ForceReceiver>();
         }
 
         private void Start()

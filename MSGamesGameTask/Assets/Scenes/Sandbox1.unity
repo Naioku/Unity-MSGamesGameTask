@@ -11139,6 +11139,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rhinbill
       objectReference: {fileID: 0}
+    - target: {fileID: 6923530366104410413, guid: a2f4dc3492d1a3d4ab01bc190707ed63, type: 3}
+      propertyPath: attacks.Array.data[0].<AttackerDisplacement>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923530366104410413, guid: a2f4dc3492d1a3d4ab01bc190707ed63, type: 3}
+      propertyPath: attacks.Array.data[0].<AttackerDisplacementSmoothingTime>k__BackingField
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8918573860506644459, guid: a2f4dc3492d1a3d4ab01bc190707ed63, type: 3}
       propertyPath: m_RootOrder
       value: 0

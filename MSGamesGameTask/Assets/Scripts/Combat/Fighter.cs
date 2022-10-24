@@ -6,7 +6,7 @@ namespace Combat
     public class Fighter: MonoBehaviour
     {
         [SerializeField] private WeaponSO defaultWeaponSo;
-        [SerializeField] private Attack[] attacks = new Attack[2];
+        [SerializeField] protected Attack[] attacks = new Attack[2];
 
         private Dictionary<AttackSlotType, Attack> _attacksLookup;
         private WeaponSet _currentWeapon;

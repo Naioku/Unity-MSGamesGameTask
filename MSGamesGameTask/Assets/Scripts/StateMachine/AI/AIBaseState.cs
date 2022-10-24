@@ -16,5 +16,10 @@ namespace StateMachine.AI
         {
             StateMachine.SwitchState(new AIChasingState(StateMachine, detectedTargets));
         }
+        
+        protected bool HasAnimationFinished(string tag)
+        {
+            return GetNormalizedAnimationTime(StateMachine.Animator, tag) >= 1f;
+        }
     }
 }

@@ -10,5 +10,10 @@ namespace Combat.AI
         {
             return (targetPosition - transform.position).sqrMagnitude <= Mathf.Pow(attackRange, 2);
         }
+
+        public Attack GetRandomAttack()
+        {
+            return attacks[Random.Range(0, attacks.Length)];
+        }
     }
 }

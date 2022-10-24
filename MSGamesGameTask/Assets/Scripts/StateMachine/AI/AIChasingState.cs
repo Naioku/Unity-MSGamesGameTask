@@ -48,9 +48,7 @@ namespace StateMachine.AI
             
             if (StateMachine.AIFighter.IsInAttackRange(_lastSeenTargetPosition))
             {
-                // StateMachine.SwitchState(StateMachine.CombatState);
-                Debug.Log("AttackState");
-
+                StateMachine.SwitchState(new AIAttackingState(StateMachine, StateMachine.AIFighter.GetRandomAttack()));
                 return;
             }
             
