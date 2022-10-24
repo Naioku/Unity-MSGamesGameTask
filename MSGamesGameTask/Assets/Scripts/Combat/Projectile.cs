@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Locomotion;
+using UnityEngine;
 
 namespace Combat
 {
@@ -9,6 +10,7 @@ namespace Combat
         [SerializeField] private GameObject hitEffect;
         [SerializeField] private GameObject[] destroyOnHit;
         [SerializeField] private float lifeAfterImpact = 2f;
+        [SerializeField] private float knockbackValue = 5f;
 
         private float _damage;
         private int _casterLayer;
@@ -51,6 +53,9 @@ namespace Combat
             if (!other.TryGetComponent(out Health health)) return;
             Vector3 hitDirection = other.transform.position - transform.position;
             health.TakeDamage(_damage, hitDirection);
+            
+            if (!other.TryGetComponent(out ForceReceiver forceReceiver)) return;
+            forceReceiver.AddForce(hitDirection * knockbackValue);
         }
     }
 }

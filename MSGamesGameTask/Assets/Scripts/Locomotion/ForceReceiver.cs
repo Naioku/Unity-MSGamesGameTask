@@ -9,6 +9,7 @@ namespace Locomotion
         public bool IsGrounded => _characterController.isGrounded;
         
         [SerializeField] private float gravityAmplifier = 4f;
+        [SerializeField] private float defaultImpactSmoothingTime = 0.1f;
 
         private CharacterController _characterController;
         private float _verticalVelocity;
@@ -45,6 +46,11 @@ namespace Locomotion
         internal void Jump(float jumpVelocity)
         {
             _verticalVelocity += jumpVelocity;
+        }
+
+        public void AddForce(Vector3 force)
+        {
+            AddForce(force, defaultImpactSmoothingTime);
         }
         
         public void AddForce(Vector3 force, float impactSmoothingTime)

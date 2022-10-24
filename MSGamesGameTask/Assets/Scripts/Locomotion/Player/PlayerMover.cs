@@ -32,6 +32,11 @@ namespace Locomotion.Player
             UpdateVelocity(momentum + _forceReceiver.ForceDisplacement);
         }
         
+        public void ApplyOnlyForces()
+        {
+            UpdateVelocity(_forceReceiver.ForceDisplacement);
+        }
+        
         private void Move(Vector3 direction, float movementSpeed)
         {
             Vector3 movementDisplacement = direction * movementSpeed;
