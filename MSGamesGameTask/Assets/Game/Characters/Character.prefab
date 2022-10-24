@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6524382334745539931}
   - component: {fileID: 2551966893679272829}
   - component: {fileID: 5594566603151993852}
+  - component: {fileID: -2013558266614912899}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -85,3 +86,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravityAmplifier: 4
+--- !u!114 &-2013558266614912899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44238303482392850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 659bdd63ea544305a89acfc50c7eaa75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentValue: 2
