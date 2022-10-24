@@ -11127,6 +11127,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 4625064953582610200, guid: a2f4dc3492d1a3d4ab01bc190707ed63, type: 3}
+      propertyPath: angle
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5514488432618569518, guid: a2f4dc3492d1a3d4ab01bc190707ed63, type: 3}
       propertyPath: m_Enabled
       value: 0

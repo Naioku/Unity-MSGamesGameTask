@@ -66,10 +66,5 @@ namespace StateMachine.AI
         {
             StateMachine.AISensor.TargetDetectedEvent -= HandleTargetDetection;
         }
-
-        private void HandleTargetDetection(List<Transform> detectedTargets)
-        {
-            StateMachine.SwitchState(new AIChasingState(StateMachine, detectedTargets));
-        }
     }
 }

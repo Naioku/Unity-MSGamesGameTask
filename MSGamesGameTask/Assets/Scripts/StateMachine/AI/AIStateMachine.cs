@@ -9,6 +9,7 @@ namespace StateMachine.AI
         [field: SerializeField] public float AnimationCrossFadeDuration { get; private set; } = 0.1f;
         [field: SerializeField] public float AnimatorDampTime { get; private set; } = 0.05f;
         [field: SerializeField] public float ChasingWaypointTolerance { get; private set; } = 1.5f;
+        [field: SerializeField] public float SuspicionTime { get; set; } = 1f;
         
         public Vector3 GuardingPosition { get; set; }
         public Animator Animator { get; private set; }

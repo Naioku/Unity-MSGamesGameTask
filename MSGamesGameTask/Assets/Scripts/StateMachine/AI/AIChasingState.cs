@@ -37,8 +37,7 @@ namespace StateMachine.AI
                         _lastSeenTargetPosition,
                         StateMachine.ChasingWaypointTolerance))
                 {
-                    // StateMachine.SwitchState(new AISuspicionState(StateMachine));
-                    Debug.Log("SuspicionState");
+                    StateMachine.SwitchState(new AISuspicionState(StateMachine));
                     return;
                 }
 
@@ -57,8 +56,7 @@ namespace StateMachine.AI
             
             if (!StateMachine.AIMover.MoveToPosition(_lastSeenTargetPosition))
             {
-                // StateMachine.SwitchState(new AISuspicionState(StateMachine));
-                Debug.Log("SuspicionState");
+                StateMachine.SwitchState(new AISuspicionState(StateMachine));
                 return;
             }
         }
