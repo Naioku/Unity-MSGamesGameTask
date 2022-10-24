@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6232295145435329555}
   - component: {fileID: -2008768784964851456}
   m_Layer: 0
-  m_Name: FireMouth
+  m_Name: FreezingMouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

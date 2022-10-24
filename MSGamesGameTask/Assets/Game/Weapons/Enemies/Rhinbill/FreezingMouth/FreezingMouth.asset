@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0cd85746c3c93a44add07510d283c0a, type: 3}
-  m_Name: FireMouth
+  m_Name: FreezingMouth
   m_EditorClassIdentifier: 
-  animatorOverride: {fileID: 0}
+  animatorOverride: {fileID: 22100000, guid: 50a7b1eb8df0e9442800f06ff4728de3, type: 2}
   weaponsToEquip:
   - attackSlotType: 2
     prefab: {fileID: -2008768784964851456, guid: 11aa8fc9f52ef7241a0c65df1ae8bff1, type: 3}
   damage: 1
-  projectile: {fileID: 0}
+  projectile: {fileID: 762161672235371160, guid: 747d7a35ef9bc914d92840ed6215c46e, type: 3}
