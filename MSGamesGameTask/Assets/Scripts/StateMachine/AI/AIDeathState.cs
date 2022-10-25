@@ -14,7 +14,13 @@ namespace StateMachine.AI
             StateMachine.AIMover.DisableMovement();
         }
 
-        public override void Tick() {}
+        public override void Tick()
+        {
+            if (HasAnimationFinished("Death"))
+            {
+                StateMachine.SpawnedEnemyController.Release();
+            }
+        }
 
         public override void Exit()
         {

@@ -26,7 +26,7 @@ namespace StateMachine.AI
             
             if (_suspicionTimer <= 0f)
             {
-                StateMachine.SwitchState(new AILocomotionState(StateMachine));
+                StateMachine.SwitchToDefaultState();
                 return;
             }
         }
