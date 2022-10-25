@@ -49,7 +49,8 @@ namespace Combat
             Destroy(gameObject, lifeAfterImpact);
 
             if (!other.TryGetComponent(out Health health)) return;
-            health.TakeDamage(_damage);
+            Vector3 hitDirection = other.transform.position - transform.position;
+            health.TakeDamage(_damage, hitDirection);
         }
     }
 }

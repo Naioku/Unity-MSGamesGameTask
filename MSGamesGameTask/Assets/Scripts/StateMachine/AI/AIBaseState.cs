@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace StateMachine.AI
 {
@@ -12,7 +11,7 @@ namespace StateMachine.AI
             StateMachine = stateMachine;
         }
         
-        protected void HandleTargetDetection(List<Transform> detectedTargets)
+        protected void HandleTargetDetection()
         {
             if (!IsAnyTargetReachable()) return;
 
@@ -24,7 +23,7 @@ namespace StateMachine.AI
             Vector3 aiPosition = StateMachine.transform.position;
             Transform closestTarget = null;
             float distanceToClosestTargetSquared = Mathf.Infinity;
-            foreach (Transform detectedTarget in StateMachine.DetectedTargets)
+            foreach (Transform detectedTarget in StateMachine.AISensor.DetectedObjects)
             {
                 if (!StateMachine.AIMover.IsPositionReachable(detectedTarget.position)) continue;
 

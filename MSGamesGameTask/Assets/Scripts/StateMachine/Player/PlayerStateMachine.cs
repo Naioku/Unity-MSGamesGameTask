@@ -17,6 +17,8 @@ namespace StateMachine.Player
         public Animator Animator { get; private set; }
         public Fighter Fighter { get; private set; }
 
+        private Health _health;
+
         private void Awake()
         {
             InputReader = GetComponent<InputReader>();
@@ -24,11 +26,34 @@ namespace StateMachine.Player
             ForceReceiver = GetComponent<ForceReceiver>();
             Animator = GetComponent<Animator>();
             Fighter = GetComponent<Fighter>();
+            _health = GetComponent<Health>();
         }
 
         private void Start()
         {
             SwitchState(new PlayerLocomotionState(this));
+        }
+        
+        private void OnEnable()
+        {
+            _health.TakeDamageEvent += HandleTakeDamage;
+            _health.DeathEvent += HandleDeath;
+        }
+
+        private void OnDisable()
+        {
+            _health.TakeDamageEvent -= HandleTakeDamage;
+            _health.DeathEvent -= HandleDeath;
+        }
+
+        private void HandleTakeDamage(Vector3 hitDirection)
+        {
+            SwitchState(new PlayerImpactState(this));
+        }
+
+        private void HandleDeath()
+        {
+            SwitchState(new PlayerDeathState(this));
         }
     }
 }

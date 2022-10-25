@@ -46,11 +46,5 @@ namespace Locomotion
         {
             _verticalVelocity += jumpVelocity;
         }
-        
-        public void AddForce(Vector3 force, float impactSmoothingTime)
-        {
-            _impactSmoothingTime = impactSmoothingTime;
-            _impact += force;
-        }
     }
 }

@@ -7,7 +7,16 @@ namespace Combat.AI
     [ExecuteAlways]
     public class AISensor : MonoBehaviour
     {
-        public event Action<List<Transform>> TargetDetectedEvent;
+        public event Action TargetDetectedEvent;
+        public event Action SensorUpdateEvent;
+        public List<Transform> DetectedObjects
+        {
+            get
+            {
+                _detectedObjects.RemoveAll(obj => !obj);
+                return _detectedObjects;
+            }
+        }
         
         [SerializeField] private float distance = 10f;
         [SerializeField] [Range(0f, 360f)] private float angle = 120f;
@@ -27,15 +36,6 @@ namespace Combat.AI
 
         private float ScanInterval => 1f / scanFrequency;
         private float HalfAngle => angle / 2;
-
-        private List<Transform> DetectedObjects
-        {
-            get
-            {
-                _detectedObjects.RemoveAll(obj => !obj);
-                return _detectedObjects;
-            }
-        }
 
         private void Start()
         {
@@ -86,8 +86,10 @@ namespace Combat.AI
 
             if (isAtLeastOneObjDetected)
             {
-                TargetDetectedEvent?.Invoke(DetectedObjects);
+                TargetDetectedEvent?.Invoke();
             }
+            
+            SensorUpdateEvent?.Invoke();
         }
 
         private Mesh CreateWedgeMesh()

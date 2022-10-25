@@ -83,6 +83,7 @@ MonoBehaviour:
   destroyOnHit:
   - {fileID: 762161672434881744}
   lifeAfterImpact: 2
+  knockbackValue: 5
 --- !u!1 &762161672343522883
 GameObject:
   m_ObjectHideFlags: 0
