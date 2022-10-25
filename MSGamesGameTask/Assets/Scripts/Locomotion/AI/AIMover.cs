@@ -48,6 +48,7 @@ namespace Locomotion.AI
         public void EnableMovement()
         {
             _isMovementDisabled = false;
+            _characterController.enabled = true;
         }
 
         public bool MoveToPosition(Vector3 position)

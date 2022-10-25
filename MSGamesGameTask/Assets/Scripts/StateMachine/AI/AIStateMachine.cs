@@ -43,11 +43,11 @@ namespace StateMachine.AI
 
         private void OnEnable()
         {
+            SwitchToDefaultState();
+            
             AISensor.SensorUpdateEvent += HandleSensorUpdate;
             _health.TakeDamageEvent += HandleTakeDamage;
             _health.DeathEvent += HandleDeath;
-            
-            SwitchToDefaultState();
         }
 
         private void OnDisable()

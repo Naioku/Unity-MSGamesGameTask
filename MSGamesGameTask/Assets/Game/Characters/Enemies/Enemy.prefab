@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2013558266614912899, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: defaultValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 44238303482392850, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -96,6 +100,19 @@ MonoBehaviour:
     <NextComboAttackNormalizedTime>k__BackingField: 0
   delayBetweenAttacks: 1
   attackRange: 10
+--- !u!114 &-7934754190518677660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668922898988278423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a23c1f9f4e74cf3b5fe659d4622df0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnAfterDeathDelay: 4
 --- !u!114 &-5661407015107090642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,15 +209,3 @@ MonoBehaviour:
   dwellingTime: 0.5
   rangeColor: {r: 0.4262407, g: 0.9150943, b: 0.31510323, a: 1}
   waypointColor: {r: 0.9622642, g: 0.8477066, b: 0.19517623, a: 1}
---- !u!114 &-7934754190518677660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2668922898988278423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a23c1f9f4e74cf3b5fe659d4622df0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

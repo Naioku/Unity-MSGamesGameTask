@@ -1,11 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Pool;
 
 namespace Core
 {
     public class EnemySpawner : MonoBehaviour
     {
+        public readonly Dictionary<GameObject, Coroutine> Timers = new();
+
         [SerializeField] private SpawnedEnemyController enemyPrefab;
+        [SerializeField] private float spawnAfterDeathDelay = 4f;
 
         private IObjectPool<SpawnedEnemyController> _enemyPool;
 
@@ -20,6 +25,11 @@ namespace Core
             _enemyPool.Get();
         }
 
+        public void Release(GameObject gameObj)
+        {
+            StartTimer(gameObj);
+        }
+        
         private SpawnedEnemyController CreateProjectile()
         {
             SpawnedEnemyController enemyInstance = Instantiate(
@@ -36,6 +46,8 @@ namespace Core
         {
             obj.gameObject.SetActive(true);
             obj.transform.position = GetRandomPosition();
+
+            obj.EnemySpawner = this;
         }
 
         private void OnRelease(SpawnedEnemyController obj)
@@ -48,6 +60,26 @@ namespace Core
         private void OnDestroyObject(SpawnedEnemyController obj)
         {
             Destroy(obj.gameObject);
+        }
+        
+        private void StartTimer(GameObject gameObj)
+        {
+            if (Timers.ContainsKey(gameObj))
+            {
+                Coroutine timer = Timers[gameObj];
+                if (Timers[gameObj] != null)
+                {
+                    StopCoroutine(timer);
+                }
+            }
+            
+            Timers[gameObj] = StartCoroutine(TimerCoroutine());
+        }
+        
+        private IEnumerator TimerCoroutine()
+        {
+            yield return new WaitForSecondsRealtime(spawnAfterDeathDelay);
+            _enemyPool.Get();
         }
 
         private static Vector3 GetRandomPosition()

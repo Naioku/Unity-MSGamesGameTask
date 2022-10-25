@@ -5288,7 +5288,7 @@ GameObject:
   - component: {fileID: 1101827145}
   - component: {fileID: 1101827146}
   m_Layer: 0
-  m_Name: Enemies
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5322,6 +5322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6963474698740092754, guid: a2f4dc3492d1a3d4ab01bc190707ed63, type: 3}
+  spawnAfterDeathDelay: 4
 --- !u!1001 &1151475609
 PrefabInstance:
   m_ObjectHideFlags: 0

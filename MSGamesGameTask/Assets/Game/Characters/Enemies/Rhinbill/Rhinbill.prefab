@@ -145,6 +145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rhinbill
       objectReference: {fileID: 0}
+    - target: {fileID: 2668922898988278423, guid: 2acdf3031f37f134a96fa4d551f0d296, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4451326927067660056, guid: 2acdf3031f37f134a96fa4d551f0d296, type: 3}
       propertyPath: attacks.Array.size
       value: 1

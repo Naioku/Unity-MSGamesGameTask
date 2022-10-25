@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: currentValue
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -2013558266614912899, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: defaultValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 44238303482392850, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: m_Name
       value: Player
@@ -201,14 +205,8 @@ MonoBehaviour:
     <WeaponSlot>k__BackingField: {fileID: 0}
     <TransitionDuration>k__BackingField: 0.1
     <NextComboAttackNormalizedTime>k__BackingField: 0.7
-    <AttackerDisplacement>k__BackingField: 0
-    <AttackerDisplacementSmoothingTime>k__BackingField: 0.1
-    <DisplacementApplicationNormalizedTime>k__BackingField: 0.1
   - <AnimationName>k__BackingField: Attack2
     <AttackSlotType>k__BackingField: 0
     <WeaponSlot>k__BackingField: {fileID: 0}
     <TransitionDuration>k__BackingField: 0.1
     <NextComboAttackNormalizedTime>k__BackingField: 0.7
-    <AttackerDisplacement>k__BackingField: 0
-    <AttackerDisplacementSmoothingTime>k__BackingField: 0.1
-    <DisplacementApplicationNormalizedTime>k__BackingField: 0.1
