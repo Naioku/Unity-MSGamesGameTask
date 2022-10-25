@@ -6,8 +6,8 @@ namespace Combat.PowerUps
 {
     public class PowerUpPickup : MonoBehaviour
     {
-        [SerializeField] private float respawnTime = 5f;
-
+        public PowerUpSpawner PowerUpSpawner { private get; set; }
+        
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent(out PlayerStateMachine playerStateMachine)) return;
@@ -17,7 +17,7 @@ namespace Combat.PowerUps
         private void Pickup(PlayerStateMachine playerStateMachine)
         {
             GetComponent<PowerUpBehaviour>().Perform(playerStateMachine);
-            StartCoroutine(HideForSeconds(respawnTime));
+            PowerUpSpawner.HidePickup(this);
         }
 
         private IEnumerator HideForSeconds(float seconds)

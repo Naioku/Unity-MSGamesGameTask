@@ -5,8 +5,8 @@ namespace Core
 {
     public class SpawnedEnemyController : MonoBehaviour
     {
-        public IObjectPool<SpawnedEnemyController> EnemyPool { get; set; }
-        public EnemySpawner EnemySpawner { get; set; }
+        public IObjectPool<SpawnedEnemyController> EnemyPool { private get; set; }
+        public EnemySpawner EnemySpawner { private get; set; }
         
         public void Release()
         {

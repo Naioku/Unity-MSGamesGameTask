@@ -24,7 +24,7 @@ namespace Core
         private void Start()
         {
             _enemyPool = new ObjectPool<SpawnedEnemyController>(
-                CreateProjectile,
+                OnCreateObject,
                 OnGet,
                 OnRelease,
                 OnDestroyObject);
@@ -37,7 +37,7 @@ namespace Core
             StartTimer(gameObj);
         }
         
-        private SpawnedEnemyController CreateProjectile()
+        private SpawnedEnemyController OnCreateObject()
         {
             SpawnedEnemyController enemyInstance = Instantiate(
                 enemyPrefab, 
