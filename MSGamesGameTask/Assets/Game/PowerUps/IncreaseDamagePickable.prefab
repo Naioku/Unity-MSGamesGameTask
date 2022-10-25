@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3986897358164453527}
   - component: {fileID: 26871967777067749}
   - component: {fileID: 1762553584854932460}
-  - component: {fileID: 6468664821360341510}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6468664821360341510
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8974884980715508724}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2635243157977683864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,7 +92,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3569608639775493717, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
       propertyPath: m_Name
-      value: FreezePickable 1
+      value: IncreaseDamagePickable
       objectReference: {fileID: 0}
     - target: {fileID: 7382109143309473134, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
       propertyPath: m_RootOrder
@@ -154,6 +140,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
+--- !u!1 &1520967171846576589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3569608639775493717, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
+  m_PrefabInstance: {fileID: 2635243157977683864}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2705636602533517586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520967171846576589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f4a17e7b84409fa68e43f9dd15e1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4819069957223875318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7382109143309473134, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}

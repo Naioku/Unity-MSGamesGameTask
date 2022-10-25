@@ -1,7 +1,8 @@
 using System.Collections;
+using StateMachine.Player;
 using UnityEngine;
 
-namespace Core
+namespace Combat.PowerUps
 {
     public class PowerUpPickup : MonoBehaviour
     {
@@ -9,12 +10,13 @@ namespace Core
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!LayerMask.NameToLayer("Player").Equals(other.gameObject.layer)) return;
-            Pickup();
+            if (!other.TryGetComponent(out PlayerStateMachine playerStateMachine)) return;
+            Pickup(playerStateMachine);
         }
         
-        private void Pickup()
+        private void Pickup(PlayerStateMachine playerStateMachine)
         {
+            GetComponent<PowerUpBehaviour>().Perform(playerStateMachine);
             StartCoroutine(HideForSeconds(respawnTime));
         }
 

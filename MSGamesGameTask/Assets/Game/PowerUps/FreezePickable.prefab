@@ -92,7 +92,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3569608639775493717, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
       propertyPath: m_Name
-      value: PickableBase
+      value: FreezePickable
       objectReference: {fileID: 0}
     - target: {fileID: 3569608639775493717, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
       propertyPath: m_Layer
@@ -108,7 +108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7382109143309473134, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7382109143309473134, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -149,7 +149,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3569608639775493717, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
   m_PrefabInstance: {fileID: 2635243157977683864}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7989210839047885059
+--- !u!114 &1957729926662552543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,10 +158,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1520967171846576589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e75ff0e90698ee54abd6f8c3e211dd54, type: 3}
+  m_Script: {fileID: 11500000, guid: af1dd830b4b04dd98380288e1e253e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnTime: 5
 --- !u!4 &4819069957223875318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7382109143309473134, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
