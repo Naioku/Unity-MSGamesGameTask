@@ -20,12 +20,7 @@ namespace StateMachine.AI
         public override void Tick()
         {
             StateMachine.AIMover.ApplyForces();
-            
-            if (GetNormalizedAnimationTime(StateMachine.Animator, "Attack") >= _attack.DisplacementApplicationNormalizedTime)
-            {
-                TryForceApplication();
-            }
-            
+
             if (HasAnimationFinished("Attack"))
             {
                 StateMachine.SwitchState(new AISuspicionState(StateMachine));
@@ -35,18 +30,6 @@ namespace StateMachine.AI
 
         public override void Exit()
         {
-        }
-        
-        private void TryForceApplication()
-        {
-            if (_forceAlreadyApplied) return;
-            
-            StateMachine.ForceReceiver.AddForce(
-                StateMachine.transform.forward * _attack.AttackerDisplacement,
-                _attack.AttackerDisplacementSmoothingTime
-            );
-            
-            _forceAlreadyApplied = true;
         }
     }
 }
