@@ -10,6 +10,5 @@ namespace Combat
         [field: SerializeField] public AttackSlotType AttackSlotType { get; private set; }
         [field: SerializeField] public Transform WeaponSlot { get; private set; }
         [field: SerializeField] public float TransitionDuration { get; private set; } = 0.1f;
-        [field: SerializeField] public float NextComboAttackNormalizedTime { get; private set; }
     }
 }

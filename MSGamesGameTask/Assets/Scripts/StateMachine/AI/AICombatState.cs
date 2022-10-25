@@ -25,7 +25,7 @@ namespace StateMachine.AI
                 return;
             }
 
-            if (StateMachine.AIFighter.ReadyForNextAttack())
+            if (StateMachine.AIFighter.ReadyForNextAttack)
             {
                 PerformAttack();
                 return;
