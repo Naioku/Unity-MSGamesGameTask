@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 762161672235371161}
   - component: {fileID: -8483607939360662266}
   - component: {fileID: 762161672235371160}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireballProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,6 @@ MonoBehaviour:
   destroyOnHit:
   - {fileID: 762161672434881744}
   lifeAfterImpact: 2
-  knockbackValue: 5
 --- !u!1 &762161672343522883
 GameObject:
   m_ObjectHideFlags: 0

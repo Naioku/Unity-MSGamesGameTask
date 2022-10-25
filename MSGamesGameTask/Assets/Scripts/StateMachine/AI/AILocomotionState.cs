@@ -20,7 +20,6 @@ namespace StateMachine.AI
         public override void Enter()
         {
             StateMachine.Animator.CrossFadeInFixedTime(LocomotionStateHash, StateMachine.AnimationCrossFadeDuration);
-
             StateMachine.AISensor.TargetDetectedEvent += HandleTargetDetection;
         }
 

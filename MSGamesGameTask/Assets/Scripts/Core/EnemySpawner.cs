@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,11 +9,10 @@ namespace Core
 {
     public class EnemySpawner : MonoBehaviour
     {
-        public readonly Dictionary<GameObject, Coroutine> Timers = new();
-
         [SerializeField] private SpawnedEnemyController enemyPrefab;
         [SerializeField] private float spawnAfterDeathDelay = 4f;
 
+        private readonly Dictionary<GameObject, Coroutine> _timers = new();
         private IObjectPool<SpawnedEnemyController> _enemyPool;
         private Collider _collider;
 
@@ -26,7 +24,7 @@ namespace Core
         private void Start()
         {
             _enemyPool = new ObjectPool<SpawnedEnemyController>(
-                CreateProjectile,
+                OnCreateObject,
                 OnGet,
                 OnRelease,
                 OnDestroyObject);
@@ -39,7 +37,7 @@ namespace Core
             StartTimer(gameObj);
         }
         
-        private SpawnedEnemyController CreateProjectile()
+        private SpawnedEnemyController OnCreateObject()
         {
             SpawnedEnemyController enemyInstance = Instantiate(
                 enemyPrefab, 
@@ -73,16 +71,16 @@ namespace Core
         
         private void StartTimer(GameObject gameObj)
         {
-            if (Timers.ContainsKey(gameObj))
+            if (_timers.ContainsKey(gameObj))
             {
-                Coroutine timer = Timers[gameObj];
-                if (Timers[gameObj] != null)
+                Coroutine timer = _timers[gameObj];
+                if (_timers[gameObj] != null)
                 {
                     StopCoroutine(timer);
                 }
             }
             
-            Timers[gameObj] = StartCoroutine(TimerCoroutine());
+            _timers[gameObj] = StartCoroutine(TimerCoroutine());
         }
         
         private IEnumerator TimerCoroutine()

@@ -61,6 +61,11 @@ namespace StateMachine.AI
         {
             SwitchState(new AILocomotionState(this));
         }
+        
+        public void SwitchToFrozenState()
+        {
+            SwitchState(new AIFrozenState(this));
+        }
 
         private void HandleSensorUpdate()
         {
