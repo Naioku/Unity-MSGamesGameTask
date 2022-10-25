@@ -15,7 +15,7 @@ namespace Combat.PowerUps
             {
                 PowerUpPickup instantiate = Instantiate(pickup, transform);
                 instantiate.PowerUpSpawner = this;
-                instantiate.gameObject.SetActive(false);
+                // SetPickupVisibility(instantiate, false);
             }
             SetPickupVisibility(GetRandomInstantiatedPickup(), true);
         }
@@ -34,7 +34,12 @@ namespace Combat.PowerUps
 
         private void SetPickupVisibility(PowerUpPickup pickup, bool shouldShow)
         {
-            pickup.gameObject.SetActive(shouldShow);
+            pickup.GetComponent<Collider>().enabled = shouldShow;
+            foreach (Transform child in pickup.transform)
+            {
+                child.gameObject.SetActive(shouldShow);
+            }
+            // pickup.gameObject.SetActive(shouldShow);
         }
 
         private PowerUpPickup GetRandomInstantiatedPickup()

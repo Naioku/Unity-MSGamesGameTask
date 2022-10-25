@@ -94,10 +94,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: IncreaseDamagePickable
       objectReference: {fileID: 0}
-    - target: {fileID: 3569608639775493717, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7382109143309473134, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -161,6 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f4a17e7b84409fa68e43f9dd15e1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  additionalDamage: 1
+  effectDuration: 10
 --- !u!4 &4819069957223875318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7382109143309473134, guid: 3a1aff9ab7139bc4fbbecf589579978d, type: 3}

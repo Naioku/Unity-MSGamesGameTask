@@ -5,6 +5,8 @@ namespace Combat
 {
     public class Fighter: MonoBehaviour
     {
+        public float AdditionalDamage { private get; set; }
+        
         [SerializeField] private WeaponSO defaultWeaponSo;
         [SerializeField] protected Attack[] attacks = new Attack[2];
 
@@ -21,11 +23,16 @@ namespace Combat
             BuildAttacksLookup();
             return _attacksLookup[attackSlotType];
         }
-        
+
         // Called by animation event
         public void Shoot(AttackSlotType attackSlotType)
         {
-            _currentWeapon.LunchProjectile(attackSlotType, _attacksLookup[attackSlotType].WeaponSlot, transform.forward, gameObject.layer);
+            _currentWeapon.LunchProjectile(
+                attackSlotType,
+                _attacksLookup[attackSlotType].WeaponSlot,
+                transform.forward,
+                this,
+                AdditionalDamage);
         }
 
         private void BuildAttacksLookup()

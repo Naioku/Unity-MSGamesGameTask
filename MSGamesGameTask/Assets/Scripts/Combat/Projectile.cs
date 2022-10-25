@@ -11,28 +11,16 @@ namespace Combat
         [SerializeField] private float lifeAfterImpact = 2f;
 
         private float _damage;
-        private int _casterLayer;
+        private Fighter _caster;
 
         private void Update()
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
-
-        public void Prepare(Vector3 direction, float damage, int casterLayer)
-        {
-            SetDirection(direction);
-            SetDamage(damage);
-            SetCasterLayer(casterLayer);
-            Destroy(gameObject, lifeTime);
-        }
-
-        private void SetDirection(Vector3 direction) => transform.forward = direction;
-        private void SetDamage(float damage) => _damage = damage;
-        private void SetCasterLayer(LayerMask casterLayer) => _casterLayer = casterLayer;
-
+        
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.layer == _casterLayer) return;
+            if (other.gameObject.layer == _caster.gameObject.layer) return;
             if (LayerMask.NameToLayer("Pickup").Equals(other.gameObject.layer)) return;
             if (LayerMask.NameToLayer("Projectile").Equals(other.gameObject.layer)) return;
             
@@ -54,5 +42,17 @@ namespace Combat
             Vector3 hitDirection = other.transform.position - transform.position;
             health.TakeDamage(_damage, hitDirection);
         }
+
+        public void Prepare(Vector3 direction, float damage, Fighter caster)
+        {
+            SetDirection(direction);
+            SetDamage(damage);
+            SetCaster(caster);
+            Destroy(gameObject, lifeTime);
+        }
+
+        private void SetDirection(Vector3 direction) => transform.forward = direction;
+        private void SetDamage(float damage) => _damage = damage;
+        private void SetCaster(Fighter caster) => _caster = caster;
     }
 }

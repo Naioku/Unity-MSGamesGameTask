@@ -1,4 +1,3 @@
-using System.Collections;
 using StateMachine.Player;
 using UnityEngine;
 
@@ -18,22 +17,6 @@ namespace Combat.PowerUps
         {
             GetComponent<PowerUpBehaviour>().Perform(playerStateMachine);
             PowerUpSpawner.HidePickup(this);
-        }
-
-        private IEnumerator HideForSeconds(float seconds)
-        {
-            SetPickupVisibility(false);
-            yield return new WaitForSecondsRealtime(seconds);
-            SetPickupVisibility(true);
-        }
-
-        private void SetPickupVisibility(bool shouldShow)
-        {
-            GetComponent<Collider>().enabled = shouldShow;
-            foreach (Transform child in transform)
-            {
-                child.gameObject.SetActive(shouldShow);
-            }
         }
     }
 }

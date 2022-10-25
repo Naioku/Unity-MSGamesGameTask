@@ -2458,7 +2458,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnTime: 5
   pickups:
-  - {fileID: 2526444396460933053, guid: 63d642ba1717f794baec5569a8dd9e3a, type: 3}
   - {fileID: 2526444396460933053, guid: 38d47b3522fe04c4bba0657dd3bccf45, type: 3}
 --- !u!1001 &438912536
 PrefabInstance:
