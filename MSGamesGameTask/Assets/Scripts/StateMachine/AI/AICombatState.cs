@@ -17,7 +17,6 @@ namespace StateMachine.AI
 
         public override void Tick()
         {
-            Debug.Log("AICombatState: CurrentTarget: " + StateMachine.CurrentTarget);
             StateMachine.Animator.SetFloat(MovementSpeedHash, 0f, StateMachine.AnimatorDampTime, Time.deltaTime);
 
             if (StateMachine.CurrentTarget == null)

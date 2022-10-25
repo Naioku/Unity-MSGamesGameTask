@@ -52,12 +52,6 @@ namespace StateMachine.AI
             _health.DeathEvent -= HandleDeath;
         }
 
-        private new void Update()
-        {
-            base.Update();
-            print("CurrentTarget: " + CurrentTarget);
-        }
-
         private void HandleSensorUpdate()
         {
             if (!AISensor.DetectedObjects.Contains(CurrentTarget))

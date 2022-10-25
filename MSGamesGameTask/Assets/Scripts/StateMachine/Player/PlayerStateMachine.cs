@@ -37,16 +37,23 @@ namespace StateMachine.Player
         private void OnEnable()
         {
             _health.TakeDamageEvent += HandleTakeDamage;
+            _health.DeathEvent += HandleDeath;
         }
 
         private void OnDisable()
         {
             _health.TakeDamageEvent -= HandleTakeDamage;
+            _health.DeathEvent -= HandleDeath;
         }
 
         private void HandleTakeDamage(Vector3 hitDirection)
         {
             SwitchState(new PlayerImpactState(this));
+        }
+
+        private void HandleDeath()
+        {
+            SwitchState(new PlayerDeathState(this));
         }
     }
 }

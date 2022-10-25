@@ -11,10 +11,20 @@ namespace Locomotion.Player
         private ForceReceiver _forceReceiver;
 
 
-        protected void Awake()
+        private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
             _forceReceiver = GetComponent<ForceReceiver>();
+        }
+        
+        public void DisableCharacterController()
+        {
+            _characterController.enabled = false;
+        }
+        
+        public void EnableCharacterController()
+        {
+            _characterController.enabled = true;
         }
 
         public void FaceCharacterToPosition(Vector3 position)
