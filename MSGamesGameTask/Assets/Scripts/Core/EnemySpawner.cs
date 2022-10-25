@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Pool;
+using Random = UnityEngine.Random;
 
 namespace Core
 {
@@ -13,6 +16,12 @@ namespace Core
         [SerializeField] private float spawnAfterDeathDelay = 4f;
 
         private IObjectPool<SpawnedEnemyController> _enemyPool;
+        private Collider _collider;
+
+        private void Awake()
+        {
+            _collider = GetComponent<Collider>();
+        }
 
         private void Start()
         {
@@ -34,7 +43,7 @@ namespace Core
         {
             SpawnedEnemyController enemyInstance = Instantiate(
                 enemyPrefab, 
-                GetRandomPosition(),
+                GetRandomPositionOnNavmesh(),
                 Quaternion.identity,
                 transform);
             
@@ -45,7 +54,7 @@ namespace Core
         private void OnGet(SpawnedEnemyController obj)
         {
             obj.gameObject.SetActive(true);
-            obj.transform.position = GetRandomPosition();
+            obj.transform.position = GetRandomPositionOnNavmesh();
 
             obj.EnemySpawner = this;
         }
@@ -82,8 +91,21 @@ namespace Core
             _enemyPool.Get();
         }
 
-        private static Vector3 GetRandomPosition()
+        private Vector3 GetRandomPositionOnNavmesh()
         {
+            Bounds colliderBounds = _collider.bounds;
+            Vector3 minBound = colliderBounds.min;
+            Vector3 maxBound = colliderBounds.max;
+
+            Vector3 randomPosition = new Vector3(
+                Random.Range(minBound.x, maxBound.x),
+                Random.Range(minBound.y, maxBound.y));
+            
+            if (NavMesh.SamplePosition(randomPosition, out NavMeshHit hit, 1f, NavMesh.AllAreas))
+            {
+                return hit.position;
+            }
+            
             return Vector3.zero;
         }
     }
