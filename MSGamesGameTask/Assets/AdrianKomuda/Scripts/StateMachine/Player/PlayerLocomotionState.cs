@@ -38,7 +38,7 @@ namespace AdrianKomuda.Scripts.StateMachine.Player
             _playerMover.MoveWithDefaultSpeed(movementDirection);
             UpdateAnimator(movementDirection);
             
-            _playerMover.FaceCharacterToPosition(_inputReader.MouseWorldPosition);
+            _playerMover.FaceCharacterToPosition(_inputReader.MouseScreenPosition);
         }
 
         public override void Exit()

@@ -8,11 +8,12 @@ namespace AdrianKomuda.Scripts.Locomotion.Player
         
         [SerializeField] private float defaultSpeed = 5f;
         [SerializeField] private float jumpVelocity = 5f;
-
+        [SerializeField] private float maxRaycastDistance = 40f;
+        [SerializeField] private LayerMask searchingLayers;
+        
         private CharacterController _characterController;
         private ForceReceiver _forceReceiver;
-
-
+        
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
@@ -31,10 +32,10 @@ namespace AdrianKomuda.Scripts.Locomotion.Player
             IsMovementDisabled = false;
         }
 
-        public void FaceCharacterToPosition(Vector3 position)
+        public void FaceCharacterToPosition(Vector2 screenPosition)
         {
             if (IsMovementDisabled) return;
-            transform.LookAt(position);
+            transform.LookAt(GetMouseWorldPosition(screenPosition));
         }
         
         public void MoveWithDefaultSpeed(Vector3 direction) => Move(direction, defaultSpeed);
@@ -61,6 +62,22 @@ namespace AdrianKomuda.Scripts.Locomotion.Player
         private void UpdateVelocity(Vector3 movement)
         {
             _characterController.Move(movement * Time.deltaTime);
+        }
+        
+        private Vector3 GetMouseWorldPosition(Vector2 mouseScreenPosition)
+        {
+            bool hasHit = Physics.Raycast(
+                GetMouseRay(mouseScreenPosition),
+                out RaycastHit hit,
+                maxRaycastDistance,
+                searchingLayers);
+            
+            return hasHit ? hit.point : Vector3.zero;
+        }
+
+        private static Ray GetMouseRay(Vector2 mousePosition)
+        {
+            return Camera.main.ScreenPointToRay(mousePosition);
         }
         
         // Animation event actions

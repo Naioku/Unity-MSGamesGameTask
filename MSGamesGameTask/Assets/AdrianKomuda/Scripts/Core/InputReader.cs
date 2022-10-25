@@ -12,10 +12,7 @@ namespace AdrianKomuda.Scripts.Core
         public event Action PauseEvent; 
         
         public Vector2 MovementValue { get; private set; }
-        public Vector3 MouseWorldPosition { get; private set; }
-        
-        [SerializeField] private float maxRaycastDistance = 40f;
-        [SerializeField] private LayerMask searchingLayers;
+        public Vector2 MouseScreenPosition { get; private set; }
         
         private Controls _controls;
 
@@ -34,9 +31,7 @@ namespace AdrianKomuda.Scripts.Core
 
         public void OnMoveMouse(InputAction.CallbackContext context)
         {
-            Vector2 mouseScreenPosition = context.ReadValue<Vector2>();
-
-            UpdateMouseWorldPosition(mouseScreenPosition);
+            MouseScreenPosition = context.ReadValue<Vector2>();
         }
 
         public void OnJump(InputAction.CallbackContext context)
@@ -57,24 +52,6 @@ namespace AdrianKomuda.Scripts.Core
         public void OnPause(InputAction.CallbackContext context)
         {
             PauseEvent?.Invoke();
-        }
-
-        private void UpdateMouseWorldPosition(Vector2 mouseScreenPosition)
-        {
-            bool hasHit = Physics.Raycast(
-                GetMouseRay(mouseScreenPosition),
-                out RaycastHit hit,
-                maxRaycastDistance,
-                searchingLayers);
-            
-            if (!hasHit) return;
-
-            MouseWorldPosition = hit.point;
-        }
-
-        private static Ray GetMouseRay(Vector2 mousePosition)
-        {
-            return Camera.main.ScreenPointToRay(mousePosition);
         }
     }
 }
