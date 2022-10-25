@@ -14,8 +14,8 @@ TagManager:
   - FacingPlane
   - Enemy
   - Player
-  - 
-  - 
+  - Pickup
+  - Projectile
   - 
   - 
   - 

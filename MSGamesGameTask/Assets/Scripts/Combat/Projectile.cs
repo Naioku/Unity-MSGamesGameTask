@@ -33,6 +33,8 @@ namespace Combat
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer == _casterLayer) return;
+            if (LayerMask.NameToLayer("Pickup").Equals(other.gameObject.layer)) return;
+            if (LayerMask.NameToLayer("Projectile").Equals(other.gameObject.layer)) return;
             
             speed = 0f;
             
