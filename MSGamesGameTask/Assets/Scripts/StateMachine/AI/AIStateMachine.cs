@@ -1,5 +1,6 @@
 ﻿using Combat;
 using Combat.AI;
+using Core;
 using Locomotion.AI;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace StateMachine.AI
         
         public Vector3 GuardingPosition { get; set; }
         public Transform CurrentTarget { get; set; }
+        public SpawnedEnemyController SpawnedEnemyController { get; set; }
         public Animator Animator { get; private set; }
         public AIMover AIMover { get; private set; }
         public AIPatroller AIPatroller { get; private set; }
@@ -21,7 +23,7 @@ namespace StateMachine.AI
         public AISensor AISensor { get; private set; }
 
         private Health _health;
-        
+
         private void Awake()
         {
             Animator = GetComponent<Animator>();
@@ -29,17 +31,20 @@ namespace StateMachine.AI
             AIPatroller = GetComponent<AIPatroller>();
             AIFighter = GetComponent<AIFighter>();
             AISensor = GetComponent<AISensor>();
+            SpawnedEnemyController = GetComponent<SpawnedEnemyController>();
             _health = GetComponent<Health>();
         }
 
         private void Start()
         {
             GuardingPosition = transform.position;
-            SwitchState(new AILocomotionState(this));
+            SwitchToDefaultState();
         }
 
         private void OnEnable()
         {
+            SwitchToDefaultState();
+            
             AISensor.SensorUpdateEvent += HandleSensorUpdate;
             _health.TakeDamageEvent += HandleTakeDamage;
             _health.DeathEvent += HandleDeath;
@@ -50,6 +55,11 @@ namespace StateMachine.AI
             AISensor.SensorUpdateEvent -= HandleSensorUpdate;
             _health.TakeDamageEvent -= HandleTakeDamage;
             _health.DeathEvent -= HandleDeath;
+        }
+        
+        public void SwitchToDefaultState()
+        {
+            SwitchState(new AILocomotionState(this));
         }
 
         private void HandleSensorUpdate()

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2013558266614912899, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
+      propertyPath: defaultValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 44238303482392850, guid: f23e4153fb0e7f54b8b6cb17f08ed827, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -89,19 +93,26 @@ MonoBehaviour:
     <WeaponSlot>k__BackingField: {fileID: 0}
     <TransitionDuration>k__BackingField: 0.1
     <NextComboAttackNormalizedTime>k__BackingField: 0
-    <AttackerDisplacement>k__BackingField: 0
-    <AttackerDisplacementSmoothingTime>k__BackingField: 0.1
-    <DisplacementApplicationNormalizedTime>k__BackingField: 0.1
   - <AnimationName>k__BackingField: 
     <AttackSlotType>k__BackingField: 0
     <WeaponSlot>k__BackingField: {fileID: 0}
     <TransitionDuration>k__BackingField: 0.1
     <NextComboAttackNormalizedTime>k__BackingField: 0
-    <AttackerDisplacement>k__BackingField: 0
-    <AttackerDisplacementSmoothingTime>k__BackingField: 0.1
-    <DisplacementApplicationNormalizedTime>k__BackingField: 0.1
+  delayBetweenAttacks: 1
   attackRange: 10
-  <DelayBetweenAttacks>k__BackingField: 1
+--- !u!114 &-7934754190518677660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668922898988278423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a23c1f9f4e74cf3b5fe659d4622df0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnAfterDeathDelay: 4
 --- !u!114 &-5661407015107090642
 MonoBehaviour:
   m_ObjectHideFlags: 0
