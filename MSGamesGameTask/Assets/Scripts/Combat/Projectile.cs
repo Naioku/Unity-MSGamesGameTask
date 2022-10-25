@@ -1,5 +1,4 @@
-﻿using Locomotion;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Combat
 {

@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using Combat;
+﻿using Combat;
 using Combat.AI;
-using Locomotion;
 using Locomotion.AI;
 using UnityEngine;
 
@@ -16,13 +14,11 @@ namespace StateMachine.AI
         
         public Vector3 GuardingPosition { get; set; }
         public Transform CurrentTarget { get; set; }
-        public List<Transform> DetectedTargets { get; private set; }
         public Animator Animator { get; private set; }
         public AIMover AIMover { get; private set; }
         public AIPatroller AIPatroller { get; private set; }
         public AIFighter AIFighter { get; private set; }
         public AISensor AISensor { get; private set; }
-        public ForceReceiver ForceReceiver { get; private set; }
 
         private Health _health;
         
@@ -33,7 +29,6 @@ namespace StateMachine.AI
             AIPatroller = GetComponent<AIPatroller>();
             AIFighter = GetComponent<AIFighter>();
             AISensor = GetComponent<AISensor>();
-            ForceReceiver = GetComponent<ForceReceiver>();
             _health = GetComponent<Health>();
         }
 
@@ -45,14 +40,16 @@ namespace StateMachine.AI
 
         private void OnEnable()
         {
-            AISensor.TargetDetectedEvent += HandleTargetDetection;
+            AISensor.SensorUpdateEvent += HandleSensorUpdate;
             _health.TakeDamageEvent += HandleTakeDamage;
+            _health.DeathEvent += HandleDeath;
         }
 
         private void OnDisable()
         {
-            AISensor.TargetDetectedEvent -= HandleTargetDetection;
+            AISensor.SensorUpdateEvent -= HandleSensorUpdate;
             _health.TakeDamageEvent -= HandleTakeDamage;
+            _health.DeathEvent -= HandleDeath;
         }
 
         private new void Update()
@@ -61,11 +58,9 @@ namespace StateMachine.AI
             print("CurrentTarget: " + CurrentTarget);
         }
 
-        private void HandleTargetDetection(List<Transform> detectedTargets)
+        private void HandleSensorUpdate()
         {
-            DetectedTargets = detectedTargets;
-            
-            if (!DetectedTargets.Contains(CurrentTarget))
+            if (!AISensor.DetectedObjects.Contains(CurrentTarget))
             {
                 CurrentTarget = null;
             }
@@ -74,6 +69,11 @@ namespace StateMachine.AI
         private void HandleTakeDamage(Vector3 hitDirection)
         {
             SwitchState(new AIImpactState(this, hitDirection));
+        }
+
+        private void HandleDeath()
+        {
+            SwitchState(new AIDeathState(this));
         }
     }
 }
