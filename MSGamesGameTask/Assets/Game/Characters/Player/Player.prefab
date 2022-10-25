@@ -204,9 +204,8 @@ MonoBehaviour:
     <AttackSlotType>k__BackingField: 1
     <WeaponSlot>k__BackingField: {fileID: 0}
     <TransitionDuration>k__BackingField: 0.1
-    <NextComboAttackNormalizedTime>k__BackingField: 0.7
   - <AnimationName>k__BackingField: Attack2
     <AttackSlotType>k__BackingField: 0
     <WeaponSlot>k__BackingField: {fileID: 0}
     <TransitionDuration>k__BackingField: 0.1
-    <NextComboAttackNormalizedTime>k__BackingField: 0.7
+  delayBetweenAttacks: 5

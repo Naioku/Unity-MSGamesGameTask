@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Combat
@@ -6,12 +7,15 @@ namespace Combat
     public class Fighter: MonoBehaviour
     {
         public float AdditionalDamage { private get; set; }
-        
+        public bool ReadyForNextAttack { get; private set; } = true;
+
         [SerializeField] private WeaponSO defaultWeaponSo;
         [SerializeField] protected Attack[] attacks = new Attack[2];
+        [SerializeField] public float delayBetweenAttacks = 1f;
 
         private Dictionary<AttackSlotType, Attack> _attacksLookup;
         private WeaponSet _currentWeapon;
+        private Coroutine _timerCoroutine;
 
         private void Start()
         {
@@ -35,6 +39,23 @@ namespace Combat
                 AdditionalDamage);
         }
 
+        public void StartTimer()
+        {
+            ReadyForNextAttack = false;
+            
+            if (_timerCoroutine != null)
+            {
+                StopCoroutine(_timerCoroutine);
+            }
+            _timerCoroutine = StartCoroutine(TimerCoroutine());
+        }
+
+        private IEnumerator TimerCoroutine()
+        {
+            yield return new WaitForSecondsRealtime(delayBetweenAttacks);
+            ReadyForNextAttack = true;
+        }
+        
         private void BuildAttacksLookup()
         {
             if (_attacksLookup != null) return;

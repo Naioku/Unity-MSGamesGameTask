@@ -1,4 +1,5 @@
 ﻿using Combat;
+using UnityEngine;
 
 namespace StateMachine.Player
 {
@@ -6,8 +7,6 @@ namespace StateMachine.Player
     {
         private readonly Attack _attack;
         
-        private bool _isComboBroken;
-
         public PlayerAttackingState(PlayerStateMachine stateMachine, Attack attack) : base(stateMachine)
         {
             _attack = attack;
@@ -36,20 +35,10 @@ namespace StateMachine.Player
         
         private void HandleAttack(AttackSlotType attackSlotType)
         {
-            if (!ReadyForNextAttack(GetNormalizedAnimationTime(StateMachine.Animator, "Attack")))
-            {
-                _isComboBroken = true;
-                return;
-            }
-            
-            if (_isComboBroken) return;
-            
-            StateMachine.SwitchState(new PlayerAttackingState(StateMachine, StateMachine.Fighter.GetAttack(attackSlotType)));
-        }
+            StateMachine.Fighter.StartTimer();
+            if (!StateMachine.Fighter.ReadyForNextAttack) return;
 
-        private bool ReadyForNextAttack(float normalizedAnimationTime)
-        {
-            return normalizedAnimationTime >= _attack.NextComboAttackNormalizedTime;
+            StateMachine.SwitchState(new PlayerAttackingState(StateMachine, StateMachine.Fighter.GetAttack(attackSlotType)));
         }
     }
 }
