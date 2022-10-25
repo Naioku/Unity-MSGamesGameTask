@@ -11,7 +11,7 @@ namespace AdrianKomuda.Scripts.Combat
         [SerializeField] private float defaultValue = 2f;
         private float _currentValue;
 
-        private void Start()
+        private void OnEnable()
         {
             Restore();
         }
@@ -27,7 +27,7 @@ namespace AdrianKomuda.Scripts.Combat
             }
         }
 
-        public void Restore()
+        private void Restore()
         {
             _currentValue = defaultValue;
         }

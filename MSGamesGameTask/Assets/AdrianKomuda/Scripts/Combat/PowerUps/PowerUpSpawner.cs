@@ -13,8 +13,9 @@ namespace AdrianKomuda.Scripts.Combat.PowerUps
         {
             foreach (PowerUpPickup pickup in pickups)
             {
-                PowerUpPickup instantiate = Instantiate(pickup, transform);
-                instantiate.PowerUpSpawner = this;
+                PowerUpPickup instance = Instantiate(pickup, transform);
+                instance.PowerUpSpawner = this;
+                SetPickupVisibility(instance, false);
             }
             SetPickupVisibility(GetRandomInstantiatedPickup(), true);
         }

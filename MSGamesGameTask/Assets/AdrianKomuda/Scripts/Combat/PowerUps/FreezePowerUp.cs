@@ -19,7 +19,6 @@ namespace AdrianKomuda.Scripts.Combat.PowerUps
 
         public override void Perform(PlayerStateMachine playerStateMachine)
         {
-            Debug.Log("Performing " + name);
             foreach (EnemySpawner enemySpawner in _enemySpawners)
             {
                 foreach (Transform enemy in enemySpawner.transform)
