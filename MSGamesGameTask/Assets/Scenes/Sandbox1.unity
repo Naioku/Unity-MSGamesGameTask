@@ -2458,7 +2458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnTime: 5
   pickups:
-  - {fileID: 2526444396460933053, guid: 38d47b3522fe04c4bba0657dd3bccf45, type: 3}
+  - {fileID: 2526444396460933053, guid: 63d642ba1717f794baec5569a8dd9e3a, type: 3}
 --- !u!1001 &438912536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5364,7 +5364,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101827144}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 827a445fad7044dea75bb1d49a3fec4f, type: 3}
   m_Name: 

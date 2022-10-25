@@ -38,10 +38,10 @@ namespace Locomotion.AI
             return distanceToWaypointSquared <= tolerance * tolerance;
         }
 
-        public void DisableMovement()
+        public void DisableMovement(bool disableAlsoCharacterController = true)
         {
             _navMeshAgent.enabled = false;
-            _characterController.enabled = false;
+            _characterController.enabled = !disableAlsoCharacterController;
             _isMovementDisabled = true;
         }
         
