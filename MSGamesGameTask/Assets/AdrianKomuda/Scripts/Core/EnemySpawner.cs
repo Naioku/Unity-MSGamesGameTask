@@ -11,6 +11,7 @@ namespace AdrianKomuda.Scripts.Core
     {
         [SerializeField] private SpawnedEnemyController enemyPrefab;
         [SerializeField] private float spawnAfterDeathDelay = 4f;
+        [SerializeField] private float enemyQuantity = 5f;
 
         private readonly Dictionary<GameObject, Coroutine> _timers = new();
         private IObjectPool<SpawnedEnemyController> _enemyPool;
@@ -29,7 +30,10 @@ namespace AdrianKomuda.Scripts.Core
                 OnRelease,
                 OnDestroyObject);
 
-            _enemyPool.Get();
+            for (int i = 0; i < enemyQuantity; i++)
+            {
+                _enemyPool.Get();
+            }
         }
 
         public void Release(GameObject gameObj)

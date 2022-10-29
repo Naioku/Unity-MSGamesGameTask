@@ -1,6 +1,7 @@
 using AdrianKomuda.Scripts.Core;
 using AdrianKomuda.Scripts.StateMachine.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace AdrianKomuda.Scripts.UI
 {
@@ -30,7 +31,13 @@ namespace AdrianKomuda.Scripts.UI
         {
             HandlePause();
         }
-        
+
+        public void OnReload()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Time.timeScale = 1f;
+        }
+
         public void OnQuit()
         {
 #if UNITY_EDITOR
@@ -48,7 +55,6 @@ namespace AdrianKomuda.Scripts.UI
             }
 
             Time.timeScale = pauseMenu.activeSelf ? 0f : 1f;
-            
         }
     }
 }
